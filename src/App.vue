@@ -1,20 +1,20 @@
 <template>
   <div id="app">
-    <layout-sidebar :defaultTags="defaultTags" :languageTags="languageTags"></layout-sidebar>
-    <div id="main">
-      <layout-header></layout-header>
-      <div class="main-body">
-        <sub-sidebar></sub-sidebar>
-        <repo-readme></repo-readme>
+
+
+        <sidebar class="sidebar"
+          :defaultTags="defaultTags"
+          :languageTags="languageTags"
+        ></sidebar>
+        <repobar class="repobar"></repobar>
+        <repo-readme class="readme"></repo-readme>
       </div>
-    </div>
-  </div>
+
 </template>
 
 <script>
-import LayoutSidebar from './components/Sidebar'
-import LayoutHeader from './components/Header'
-import SubSidebar from './components/SubSidebar'
+import Sidebar from './components/Sidebar'
+import Repobar from './components/SubSidebar'
 import RepoReadme from './components/RepoReadme'
 import appConfig from './config'
 
@@ -22,9 +22,10 @@ const { defaultTags } = appConfig
 
 export default {
   name: 'App',
-  components: { LayoutSidebar, LayoutHeader, SubSidebar, RepoReadme },
+  components: { Sidebar, Repobar, RepoReadme },
   data () {
     return {
+      show: true,
       languageTags: [],
     }
   },
@@ -42,22 +43,23 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #app {
-  display: flex;
   height: 100%;
-}
+  width: 100%;
 
-#main {
   display: flex;
-  flex-direction: column;
-  flex: auto;
+  flex-direction: row;
+  justify-content: flex-start;
+  .sidebar {
+    width: 300px;
+    height: 100%;
+  }
+
+
+
 }
 
-.main-body {
-  flex: auto;
-  position: relative;
-}
 </style>
 
 <style>

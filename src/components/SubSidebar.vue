@@ -1,18 +1,19 @@
 <template>
-  <div id="subsidebar">
+  <div
+    id="subsidebar"
+    :style="{'width': `${width}px`}"
+    @mousedown="mouseDown">
     <template v-if="isLoadedData">
-      <sub-sidebar-header :searchValue.sync="searchValue" @onSwitchRepoSort="handleSwitchRepoSort"></sub-sidebar-header>
+      <sub-sidebar-header
+        :searchValue.sync="searchValue"
+        @onSwitchRepoSort="handleSwitchRepoSort"
+      ></sub-sidebar-header>
       <ul v-show="repos.length" class="repo-list">
         <repo v-for="repo of repos" :key="repo.id" :repo="repo" :class="{ active: repo.id === activeRepo.id }"></repo>
       </ul>
       <div v-show="!repos.length" class="no-match vc-p">
         <i class="fa fa-bell-o fa-3x" aria-hidden="true"></i>
         <p class="ttc">{{ $t('noMatchingReposigory') }}</p>
-        <p>
-          <i class="fa fa-hand-o-left fa-lg" aria-hidden="true"></i>
-          <span>{{ $t('switchTagOrAdjustSearch') }}</span>
-          <i class="fa fa-hand-o-up fa-lg" aria-hidden="true"></i>
-        </p>
       </div>
     </template>
     <div v-else class="loader vc-p">
@@ -31,8 +32,14 @@ import config from '@/config'
 export default {
   name: 'sub-sidebar',
   components: { SubSidebarHeader, Repo },
+  created () {
+    window.addEventListener('mouseup', this.mouseUp)
+    window.addEventListener('mousemove', this.mouseMove)
+  },
   data () {
     return {
+      width: 359,
+      move: false,
       searchValue: '',
       sortKey: config.repoSorts.time.sortKey,
     }
@@ -51,45 +58,52 @@ export default {
     handleSwitchRepoSort (key) {
       this.sortKey = key
     },
+    mouseDown () {
+      this.move = true
+    },
+    mouseMove (event) {
+      event.preventDefault()
+      if (!this.move) { return }
+      this.width = Math.max(this.width + event.movementX, 250)
+    },
+    mouseUp () {
+      this.move = false
+    },
   },
 }
 </script>
 
-<style scoped>
-#subsidebar {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  width: 359px;
-  height: 100%;
-  border-right: 1px solid #e9e9e9;
-  background-color: #fbfbfb;
-}
-
-@media (min-width: 1500px) {
+<style scoped lang="scss">
   #subsidebar {
-    width: 409px;
+    position: relative;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #fbfbfb;
+    cursor: col-resize;
+    .loader, .no-match {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 14px;
+      text-align: center;
+      color: #bfbfbf;
+    }
+    .repo-list {
+      overflow: auto;
+      flex: auto;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
   }
-}
 
-.repo-list {
-  overflow: auto;
-  flex: auto;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.repo-list::-webkit-scrollbar-thumb {
-  background-color: #e9e9e9;
-}
-
-.loader,
-.no-match {
-  top: 40%;
-  width: 100%;
-  font-size: 14px;
-  text-align: center;
-  color: #bfbfbf;
-}
 </style>

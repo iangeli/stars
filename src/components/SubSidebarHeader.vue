@@ -4,7 +4,7 @@
       <i class="fa fa-search" aria-hidden="true"></i>
       <input
         :value="searchValue"
-        :placeholder="`${$t('developer')} | ${$t('repositoryName')} @${activeTag.i18nKey ? $t(activeTag.i18nKey) : activeTag.name}`"
+        :placeholder="`${$t('developer')} | ${$t('repositoryName')} | @标签`"
         type="text"
         class="search-input"
         @input="handleInputSearchValue" />
@@ -14,7 +14,7 @@
       <el-dropdown-menu slot="dropdown" id="subsidebar-header__dropdown-menu">
         <el-dropdown-item v-for="sort in repoSorts" :key="sort.id" :command="sort.sortKey">
           <i :class="sort.icon" class="fa" aria-hidden="true"></i>
-          <span class="subsidebar-header__dropdown-menu--text">{{ $t(sort.i18nKey) || sort.name }}</span>
+          <span class="subsidebar-header__dropdown-menu--text">{{ sort.name }}</span>
         </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -79,6 +79,11 @@ export default {
   outline: none;
   background-color: #fcfcfc;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  /*placeho*/
+}
+
+.search-input::-webkit-input-placeholder, .search-input::-moz-placeholder, .search-input::-ms-input-placeholder{
+  color: rgba(90,90,90,0.3);
 }
 
 .fa-search {

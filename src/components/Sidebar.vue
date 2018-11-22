@@ -1,11 +1,6 @@
 <template>
   <div id="sidebar">
-    <header>
-      <h1 style="display: none;">Github Stars Manager</h1>
-      <a href="https://github.com/Monine/gitstars" target="_blank" rel="noopener noreferrer">
-        <img src="../assets/app-name.png" alt="app name" class="app-name-img">
-      </a>
-    </header>
+    <layout-header></layout-header>
     <tags-nav :tags="defaultTags" class="default-tags"></tags-nav>
     <div class="sidebar-main">
       <tag-nav-header :isCustomCategoryActive="isCustomCategoryActive" :tagNameFormVisible.sync="tagNameFormVisible"></tag-nav-header>
@@ -13,7 +8,7 @@
         <new-tag-name-form v-show="tagNameFormVisible" :visible.sync="tagNameFormVisible"></new-tag-name-form>
       </transition>
       <transition name="slide-down">
-        <div v-show="isEditingTags" class="edit-tag-tip">{{ $t('tips.editTag') }}</div>
+        <div v-show="isEditingTags" class="edit-tag-tip">Edit</div>
       </transition>
       <div class="tag-list__group">
         <transition name="slide-to-left">
@@ -26,7 +21,7 @@
       <transition name="telescopic">
         <div v-show="isLoadedData && !customTags.length && isCustomCategoryActive" class="no-tag vc-p">
           <i class="fa fa-hand-o-up fa-2x" aria-hidden="true"></i>
-          <p>{{ $t('addTag') }}</p>
+          <p>Add</p>
         </div>
       </transition>
       <transition name="slide-up">
@@ -36,10 +31,6 @@
           :activeTagCategory.sync="activeTagCategory">
         </tag-categorys>
       </transition>
-      <footer class="sidebar-footer">
-        <span>Author&nbsp;:&nbsp;</span>
-        <h1 class="author"><a href="https://github.com/Monine" target="_blank" class="author-name" rel="noopener noreferrer">Monine</a></h1>
-      </footer>
     </div>
   </div>
 </template>
@@ -52,10 +43,11 @@ import NewTagNameForm from './NewTagNameForm'
 import CustomTagsNav from './CustomTagsNav'
 import TagCategorys from './TagCategorys'
 import appConfig from '@/config'
+import LayoutHeader from './Header'
 
 export default {
   name: 'sidebar',
-  components: { TagsNav, TagNavHeader, NewTagNameForm, CustomTagsNav, TagCategorys },
+  components: { LayoutHeader, TagsNav, TagNavHeader, NewTagNameForm, CustomTagsNav, TagCategorys },
   props: {
     defaultTags: { type: Array, required: true },
     languageTags: { type: Array, required: true },
@@ -93,11 +85,6 @@ export default {
   #sidebar {
     flex: 0 0 290px;
   }
-}
-
-.app-name-img {
-  width: 100%;
-  padding: 10px 0;
 }
 
 .default-tags {

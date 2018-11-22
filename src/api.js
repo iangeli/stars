@@ -17,15 +17,6 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(({ data }) => {
   return data
 }, err => {
-  // let message = err.message
-  // const { response = {} } = err
-  // const { config, data, status, statusText } = response
-
-  // if (!err.__CANCEL__ && !/(\/repos\/).+(\/readme)/.test(config.url)) {
-  //   if (data) message = data.message
-  //   Notification.error({ message, title: `${status} ${statusText}`, showClose: false })
-  // }
-
   return Promise.reject(err)
 })
 

@@ -16,6 +16,7 @@ export default new Vuex.Store({
     isEditingTags: false,
     isUpdatingData: false,
     isLoadedData: false,
+    showSeting: false,
   },
   mutations: {
     initGistId (state, gistId) {

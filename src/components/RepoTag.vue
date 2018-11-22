@@ -54,15 +54,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .tag-item {
   position: relative;
   margin-bottom: 0.3em;
   margin-right: 0.5em;
 }
 
-.tag.clickable:hover {
-  border-color: rgba(66, 161, 255, .5);
+.tag.clickable {
+  border: none;
 }
 
 .tag-delete-btn {
@@ -83,16 +83,14 @@ export default {
   cursor: pointer;
   transform: scale(0);
   transition: transform .15s;
-}
-
-.tag-delete-btn:hover,
-.tag-delete-btn.active {
-  color: #fff;
-  background-color: rgba(66, 161, 255, .8);
+  &:hover, &:active {
+    color: #fff;
+    background-color: rgba(66, 161, 255, .8);
+  }
 }
 
 .tag:hover .tag-delete-btn,
-.tag-delete-btn.active {
+.tag-delete-btn:active {
   transform: scale(1);
 }
 </style>

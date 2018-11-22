@@ -4,7 +4,13 @@
       <a :href="activeRepo.html_url" target="_blank" rel="noopener noreferrer">
         <i class="fa fa-fw fa-lg fa-github" aria-hidden="true"></i>
       </a>
-      <span>{{ activeRepo.owner.login }} / {{ activeRepo.name }}</span>
+      <a class="user" :href="activeRepo.owner.html_url" target="_blank">
+        <span>{{ activeRepo.owner.login }}</span>
+      </a>
+      <span> / </span>
+      <a class="repo" :href="activeRepo.html_url" target="_blank">
+        <span>{{ activeRepo.name }}</span>
+      </a>
     </h3>
     <el-autocomplete
       v-model="tagName"
@@ -55,7 +61,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .repo-readme__header {
   display: flex;
   justify-content: space-between;
@@ -65,29 +71,28 @@ export default {
   border-bottom: 1px solid #e9e9e9;
   background-color: #fbfbfb;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  .repo-title {
+    color: #586069;
+    font-weight: 500;
+    .fa-github {
+      color: #586069;
+    }
+    .user {
+      font-weight: 400;
+    }
+    .repo {
+      font-weight: 600;
+    }
+  }
+
+  .repo-tag-input {
+    width: 200px;
+    .el-button {
+      padding: 10px;
+    }
+  }
 }
 
-.repo-readme__header .fa-github,
-.repo-title {
-  color: #5a5a5a;
-}
 
-.repo-tag-input {
-  width: 200px;
-}
-
-.repo-tag-input .el-input-group__append .el-button {
-  padding: 10px;
-}
-</style>
-
-<style>
-.el-autocomplete-suggestion.el-popper .popper__arrow {
-  left: 50% !important;
-  margin-left: -6px;
-}
-
-.el-autocomplete-suggestion li {
-  padding: 0 10px;
-}
 </style>

@@ -29,7 +29,7 @@ export default {
     language: { id: 1, name: '语言', i18nKey: 'language' },
   },
   repoSorts: {
-    time: { id: 0, sortKey: '_sortTime', name: '时间', i18nKey: 'time', icon: 'fa-clock-o' },
+    time: { id: 0, sortKey: '_sortTime', name: '时间', icon: 'fa-clock-o' },
     star: { id: 1, sortKey: 'stargazers_count', name: 'star', icon: 'fa-star' },
   },
 }

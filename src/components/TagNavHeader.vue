@@ -1,33 +1,23 @@
 <template>
-  <header class="nav-caption">
-    <h3 class="nav-caption__title">
-      <i class="fa fa-fw fa-tags" aria-hidden="true"></i>
-      <span>{{ $t('tags').toUpperCase() }}</span>
-    </h3>
-    <transition name="slide-to-left">
-      <div v-show="isLoadedData && isCustomCategoryActive" class="nav-caption__operate">
-        <div :class="{ disabled: isEditingTags || tagNameFormVisible }" class="nav-caption__operate-btn" @click="handleAddNewTag">
-          <span><i class="fa fa-plus-square" aria-hidden="true"></i>{{ $t('add') }}</span>
-        </div>
-        <transition-group name="enlarge" tag="div" class="nav-caption__group--edit-ok">
-          <div
-            v-show="isEditingTags"
-            key="ok"
-            class="nav-caption__operate-btn nav-caption__ok-btn"
-            @click="handleCompleteEditTags">
-            <span>{{ $t('ok').toUpperCase() }}</span>
-          </div>
-          <div
-            v-show="!isEditingTags"
-            :class="{ disabled: tagNameFormVisible || !customTags.length }"
-            key="edit"
-            class="nav-caption__operate-btn"
-            @click="handleEditTags">
-            <span><i class="fa fa-cog" aria-hidden="true"></i>{{ $t('edit.default') }}</span>
-          </div>
-        </transition-group>
-      </div>
-    </transition>
+  <header v-show="isLoadedData && isCustomCategoryActive" class="nav-caption">
+    <div :class="{ disabled: isEditingTags || tagNameFormVisible }" class="nav-caption__operate-btn" @click="handleAddNewTag">
+      <i class="fa fa-plus-square" aria-hidden="true"></i>
+    </div>
+    <div
+      v-if="isEditingTags"
+      key="ok"
+      class="nav-caption__operate-btn nav-caption__ok-btn"
+      @click="handleCompleteEditTags">
+      <span>完成</span>
+    </div>
+    <div
+      v-else
+      :class="{ disabled: tagNameFormVisible || !customTags.length }"
+      key="edit"
+      class="nav-caption__operate-btn"
+      @click="handleEditTags">
+      <i class="fa fa-cog" aria-hidden="true"></i>
+    </div>
   </header>
 </template>
 
@@ -76,67 +66,48 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .nav-caption {
   display: flex;
   justify-content: space-between;
-  flex: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 12px;
   transition: all 0.3s;
-}
-
-.nav-caption__title {
-  flex: auto;
-  font-size: 14px;
-  padding-left: 1em;
-  color: #919191;
-}
-
-.nav-caption__operate {
-  display: flex;
-  flex: 0 0 140px;
+  height: 30px;
+  i {
+    font-size: 16px;
+  }
 }
 
 .nav-caption__operate-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 0 0 49px;
-  padding: 0 10px;
+  width: 50%;
   border-left: 1px solid rgba(255, 255, 255, 0.08);
   text-transform: capitalize;
   cursor: pointer;
   user-select: none;
-}
-
-.nav-caption__operate-btn.disabled {
-  color: #919191;
-  cursor: default;
-}
-
-.nav-caption__operate-btn.disabled:hover {
-  background-color: transparent;
-}
-
-.nav-caption__operate-btn .fa {
-  margin-right: 5px;
-}
-
-.nav-caption__group--edit-ok {
-  display: flex;
-  flex: auto;
+  &.disabled {
+    color: #919191;
+    cursor: default;
+  }
+  &:hover {
+    background-color: transparent;
+  }
+  .fa {
+    margin-right: 5px;
+  }
 }
 
 .nav-caption__ok-btn {
   background-color: rgba(255, 255, 255, 0.1);
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+  &:active {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 }
 
-.nav-caption__ok-btn:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-}
-
-.nav-caption__ok-btn:active {
-  background-color: rgba(255, 255, 255, 0.1);
-}
 </style>

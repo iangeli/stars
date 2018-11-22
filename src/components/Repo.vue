@@ -1,21 +1,21 @@
 <template>
   <li class="repo-item" @click="handleSwitchActiveRepo">
-    <header>
-      <h3 class="repo-title">
-        <a :href="repo.html_url" target="_blank" rel="noopener noreferrer">{{ repo.owner.login }} / {{ repo.name }}</a>
-        <a v-show="repo.homepage" :href="repo.homepage" target="_blank" rel="noopener noreferrer">
-          <i class="fa fa-fw fa-lg fa-home" aria-hidden="true"></i>
-        </a>
-      </h3>
-    </header>
+    <div class="repo-title">
+      <a class="user" :href="repo.owner.html_url" target="_blank" rel="noopener noreferrer">{{ repo.owner.login }}</a>
+      <span class="split">/</span>
+      <a class="repo" :href="repo.html_url" target="_blank" rel="noopener noreferrer">{{ repo.name }}</a>
+      <span class="star"><i class="fa fa-star" aria-hidden="true"></i> {{ manageNum(repo.stargazers_count) }}</span>
+    </div>
     <p class="repo-desc">{{ repo.description }}</p>
-    <ul class="tag-list">
-      <repo-tag v-for="tag of repo._customTags" :key="tag.id" :repo="repo" :tag="tag" />
-    </ul>
-    <footer class="repo-footer">
-      <span class="repo-star"><i class="fa fa-star" aria-hidden="true"></i>{{ repo.stargazers_count }}</span>
-      <span class="repo-fork"><i class="fa fa-code-fork" aria-hidden="true"></i>{{ repo.forks_count }}</span>
-      <span class="repo-language">{{ repo.language }}</span>
+
+    <footer class="footer">
+      <ul class="tag-list">
+        <repo-tag v-for="tag of repo._customTags" :key="tag.id" :repo="repo" :tag="tag" />
+      </ul>
+      <div class="language" v-if="repo.language && repo.language.length > 0">
+        <div class="color" ref="color" :style="{'background-color':color}"></div>
+        <span>{{ repo.language }}</span>
+      </div>
     </footer>
   </li>
 </template>
@@ -29,41 +29,88 @@ export default {
   props: {
     repo: { type: Object, required: true },
   },
+  computed: {
+    color: function () {
+      const defautColor = {
+        'C': 'rgb(85,85,85)',
+        'C++': 'rgb(241,86,124)',
+        'CoffeeScript': 'rgb(33,71,121)',
+        'CSS': 'rgb(84,63,127)',
+        'Erlang': 'rgb(181,66,155)',
+        'GCC Machine Description': 'rgb(204,204,204)',
+        'Go': 'rgb(50,94,175)',
+        'HTML': 'rgb(227,84,9)',
+        'Java': 'rgb(176,116,0)',
+        'JavaScript': 'rgb(243,224,65)',
+        'Kotlin': 'rgb(240,145,20)',
+        'Objective-C': 'rgb(56,142,255)',
+        'Objective-C++': 'rgb(95,105,255)',
+        'PHP': 'rgb(77,93,152)',
+        'Python': 'rgb(50,113,168)',
+        'Ruby': 'rgb(111,28,17)',
+        'Scala': 'rgb(192,57,60)',
+        'Shell': 'rgb(144,221,57)',
+        'Swift': 'rgb(255,174,44)',
+        'TypeScript': 'rgb(44,115,139)',
+        'XSLT': 'rgb(232,145,239)'}
+      return defautColor[this.repo.language]
+    },
+  },
   methods: {
     handleSwitchActiveRepo () {
       this.$store.dispatch('repo/switchActive', this.repo)
+    },
+    manageNum (num) {
+      switch (true) {
+        case (num < 1000):
+          return num
+        case (num < 1000000):
+          return `${(num / 1000).toFixed(1)}k`
+        default:
+          return `${(num / 1000000).toFixed(1)}m`
+      }
     },
   },
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .repo-item {
   padding: 15px;
   border-bottom: 1px solid #e9e9e9;
   cursor: pointer;
   background-color: #fff;
-}
-
-.repo-item:hover {
-  background-color: #fbfbfb;
-}
-
-.repo-item.active {
-  background-color: #f7f7f7;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.repo-item:last-child {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  &:active {
+    background: rgba(0,0,0,0.1);
+  }
 }
 
 .repo-title {
+  position: relative;
   display: flex;
-  justify-content: space-between;
-  margin: 0;
+  justify-content: flex-start;
+  align-items: center;
   font-size: 16px;
-  color: #948aec;
+
+  overflow: hidden;
+  .user{
+    font-weight: 400;
+  }
+  .split {
+    font-weight: 500;
+    color: #586069;
+    margin: 0 5px;
+  }
+  .repo {
+    flex: 1 1;
+    font-weight: 600;
+  }
+  .star {
+    float: right;
+    margin-left: 10px;
+    color: #586069;
+    font-size: 12px;
+  }
 }
 
 .repo-desc {
@@ -72,34 +119,36 @@ export default {
   color: #5a5a5a;
 }
 
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 0;
-  font-size: 12px;
-  list-style: none;
-  color: #fff;
-}
-
-.repo-footer {
+.footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 0.5em;
-  font-size: 12px;
-  font-weight: 700;
-  color: #76d0a3;
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    font-size: 12px;
+    list-style: none;
+    color: #fff;
+  }
+
+  .language {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+
+    font-size: 12px;
+    font-weight: 400;
+    color: #5a5a5a;
+    text-align: right;
+    .color {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+  }
 }
 
-.repo-footer .fa {
-  margin-right: 5px;
-}
 
-.repo-fork {
-  margin-left: 15px;
-}
-
-.repo-language {
-  flex: auto;
-  text-align: right;
-}
 </style>
