@@ -26,10 +26,10 @@ export default {
   components: { RepoReadmeHeader },
   computed: {
     ...mapState('repo', { readme: 'readme', activeRepo: 'active' }),
-    isSelectedRepo () {
+    isSelectedRepo() {
       return !!Object.keys(this.activeRepo).length
     },
-    isReadmeError () {
+    isReadmeError() {
       return typeof this.readme !== 'string'
     },
   },

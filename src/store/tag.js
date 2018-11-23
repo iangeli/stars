@@ -9,46 +9,46 @@ export default {
     active: appConfig.defaultTags.all,
   },
   mutations: {
-    initTags (state, tags) {
+    initTags(state, tags) {
       state.tags = tags
     },
-    switchActive (state, tag) {
+    switchActive(state, tag) {
       state.active = tag
     },
-    changeTagName (state, { tagId, name }) {
+    changeTagName(state, { tagId, name }) {
       const tag = state.tags.find(tag => tag.id === tagId)
       tag.name = name
     },
-    addTag (state, tag) {
+    addTag(state, tag) {
       state.tags.push(tag)
     },
-    popTag (state) {
+    popTag(state) {
       state.tags.pop()
     },
-    deleteTag (state, tagId) {
+    deleteTag(state, tagId) {
       const { tags } = state
       const index = tags.findIndex(tag => tag.id === tagId)
       tags.splice(index, 1)
     },
-    addTagRepo (state, { tagId, repoId }) {
+    addTagRepo(state, { tagId, repoId }) {
       const tag = state.tags.find(tag => tag.id === tagId)
       tag.repos.push(repoId)
     },
-    insertTagRepo (state, { tagId, repoIndex, repoId }) {
+    insertTagRepo(state, { tagId, repoIndex, repoId }) {
       const tag = state.tags.find(tag => tag.id === tagId)
       tag.repos.splice(repoIndex, 0, repoId)
     },
-    popTagRepo (state, tagId) {
+    popTagRepo(state, tagId) {
       const tag = state.tags.find(tag => tag.id === tagId)
       tag.repos.pop()
     },
-    deleteTagRepo (state, { tagId, repoIndex }) {
+    deleteTagRepo(state, { tagId, repoIndex }) {
       const tag = state.tags.find(tag => tag.id === tagId)
       tag.repos.splice(repoIndex, 1)
     },
   },
   actions: {
-    resetTags ({ commit, rootState }, tags) {
+    resetTags({ commit, rootState }, tags) {
       /**
        * 当用户编辑 tags 完成之后确认更新数据
        * 如果更新数据接口出错
@@ -63,7 +63,7 @@ export default {
       commit('initTags', tags)
       formatReposTag(rootState.repo.repos, tags)
     },
-    async addTag ({ state, commit, dispatch, rootState }, tag) {
+    async addTag({ state, commit, dispatch, rootState }, tag) {
       if (rootState.isUpdatingData) {
         const message = i18n.t('update.uncompleted')
         notifyInfo({ message })
@@ -83,13 +83,13 @@ export default {
           throw new Error(message)
         })
     },
-    changeTagName ({ state, commit }, { tagId, name }) {
+    changeTagName({ state, commit }, { tagId, name }) {
       return validateTagName(state.tags, name)
         .then(name => {
           commit('changeTagName', { tagId, name })
         })
     },
-    deleteTag ({ commit }, tagId) {
+    deleteTag({ commit }, tagId) {
       commit('deleteTag', tagId)
       commit('repo/deleteReposTag', tagId, { root: true })
     },

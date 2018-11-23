@@ -37,16 +37,16 @@ export default {
     ...mapState('tag', { customTags: 'tags' }),
   },
   methods: {
-    handleAddNewTag () {
+    handleAddNewTag() {
       if (this.isEditingTags || this.tagNameFormVisible) return
       this.$emit('update:tagNameFormVisible', true)
     },
-    handleEditTags () {
+    handleEditTags() {
       if (this.tagNameFormVisible || !this.customTags.length) return
       customTagsClone = JSON.parse(JSON.stringify(this.customTags))
       this.$store.commit('toggleIsEditingTags', true)
     },
-    handleCompleteEditTags () {
+    handleCompleteEditTags() {
       this.$store.commit('toggleIsEditingTags', false)
 
       let isChanged = false

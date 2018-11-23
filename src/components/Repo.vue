@@ -30,7 +30,7 @@ export default {
     repo: { type: Object, required: true },
   },
   computed: {
-    color: function () {
+    color: function() {
       const defautColor = {
         'C': 'rgb(85,85,85)',
         'C++': 'rgb(241,86,124)',
@@ -52,15 +52,15 @@ export default {
         'Shell': 'rgb(144,221,57)',
         'Swift': 'rgb(255,174,44)',
         'TypeScript': 'rgb(44,115,139)',
-        'XSLT': 'rgb(232,145,239)'}
+        'XSLT': 'rgb(232,145,239)' }
       return defautColor[this.repo.language]
     },
   },
   methods: {
-    handleSwitchActiveRepo () {
+    handleSwitchActiveRepo() {
       this.$store.dispatch('repo/switchActive', this.repo)
     },
-    manageNum (num) {
+    manageNum(num) {
       switch (true) {
         case (num < 1000):
           return num

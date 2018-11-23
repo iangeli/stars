@@ -30,7 +30,7 @@ export default {
   props: {
     searchValue: { type: String, default: '' },
   },
-  data () {
+  data() {
     return {
       repoSorts: appConfig.repoSorts,
     }
@@ -39,10 +39,10 @@ export default {
     ...mapState('tag', { activeTag: 'active' }),
   },
   methods: {
-    handleInputSearchValue (event) {
+    handleInputSearchValue(event) {
       this.$emit('update:searchValue', event.target.value.toLowerCase())
     },
-    handleSortRepos (key) {
+    handleSortRepos(key) {
       this.$emit('onSwitchRepoSort', key)
     },
   },

@@ -1,14 +1,12 @@
 <template>
   <div id="app">
-
-
-        <sidebar class="sidebar"
-          :defaultTags="defaultTags"
-          :languageTags="languageTags"
-        ></sidebar>
-        <repobar class="repobar"></repobar>
-        <repo-readme class="readme"></repo-readme>
-      </div>
+    <sidebar class="sidebar"
+             :defaultTags="defaultTags"
+             :languageTags="languageTags"
+    ></sidebar>
+    <repobar class="repobar"></repobar>
+    <repo-readme class="readme"></repo-readme>
+  </div>
 
 </template>
 
@@ -23,21 +21,21 @@ const { defaultTags } = appConfig
 export default {
   name: 'App',
   components: { Sidebar, Repobar, RepoReadme },
-  data () {
+  data() {
     return {
       show: true,
       languageTags: [],
     }
   },
   computed: {
-    defaultTags () {
+    defaultTags() {
       return [
         Object.assign({}, defaultTags.all, { repos: this.$store.state.repo.repos }),
         Object.assign({}, defaultTags.untagged, { repos: this.$store.getters['repo/untaggedRepos'] }),
       ]
     },
   },
-  mounted () {
+  mounted() {
     this.$store.dispatch('initGitstars').then(tags => Object.assign(this, tags))
   },
 }
@@ -52,12 +50,16 @@ export default {
   flex-direction: row;
   justify-content: flex-start;
   .sidebar {
+    flex: 0 0 auto;
     width: 300px;
     height: 100%;
   }
-
-
-
+  .repobar{
+    flex: 0 0 auto;
+  }
+  .readme{
+    flex: 1 1;
+  }
 }
 
 </style>

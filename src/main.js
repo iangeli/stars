@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const { clientId, clientSecret, localStorageKeys } = appConfig
 
-async function accessTokenProcess () {
+async function accessTokenProcess() {
   const accessToken = window.localStorage.getItem(localStorageKeys.accessToken)
 
   if (accessToken) return accessToken
@@ -69,5 +69,5 @@ accessTokenProcess()
   })
   .then(() => {
     /* eslint-disable no-new */
-    new Vue({ store, i18n, el: '#app', template: '<App/>', components: { App } })
+    new Vue({ store, i18n, el: '#app', template: '<App/>', components: { App }})
   })

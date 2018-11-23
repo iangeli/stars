@@ -52,7 +52,7 @@ export default {
     defaultTags: { type: Array, required: true },
     languageTags: { type: Array, required: true },
   },
-  data () {
+  data() {
     const { tagCategorys } = appConfig
     return {
       tagCategorys,
@@ -63,7 +63,7 @@ export default {
   computed: {
     ...mapState(['isEditingTags', 'isLoadedData']),
     ...mapState('tag', { customTags: 'tags' }),
-    isCustomCategoryActive () {
+    isCustomCategoryActive() {
       return this.activeTagCategory === this.tagCategorys.custom
     },
   },

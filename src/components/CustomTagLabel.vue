@@ -27,7 +27,7 @@ export default {
     tag: { type: Object, required: true },
     isEditingTags: { type: Boolean, default: false },
   },
-  data () {
+  data() {
     const { tag } = this
     return {
       isEditing: false,
@@ -36,14 +36,14 @@ export default {
     }
   },
   methods: {
-    handleEditTagName () {
+    handleEditTagName() {
       if (!this.isEditingTags) return
 
       this.name = preName = this.tag.name
       this.isEditing = true
       this.$nextTick(() => this.$refs[this.ref].focus())
     },
-    handleChangeTagNameByBlur () {
+    handleChangeTagNameByBlur() {
       if (isChangeTagNameByEnter) return (isChangeTagNameByEnter = false)
 
       this.$store.dispatch('tag/changeTagName', { tagId: this.tag.id, name: this.name })
@@ -53,7 +53,7 @@ export default {
           this.isEditing = false
         })
     },
-    handleChangeTagNameByEnter () {
+    handleChangeTagNameByEnter() {
       if (this.name === this.tag.name) return (this.isEditing = false)
 
       this.$store.dispatch('tag/changeTagName', { tagId: this.tag.id, name: this.name })
@@ -63,7 +63,7 @@ export default {
         })
         .catch(({ message }) => notifyWarn({ message }))
     },
-    handleCancelEditTagName () {
+    handleCancelEditTagName() {
       this.isEditing = false
       this.name = preName
     },

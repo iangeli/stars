@@ -30,7 +30,7 @@ export default {
   props: {
     visible: { type: Boolean, default: false },
   },
-  data () {
+  data() {
     return {
       name: '',
       inputState: FOCUS,
@@ -38,26 +38,26 @@ export default {
     }
   },
   watch: {
-    visible (newValue) {
+    visible(newValue) {
       if (newValue) this.$refs.nameInput.focus()
     },
   },
   methods: {
-    handleInputTagName () {
+    handleInputTagName() {
       this.btnState = this.name.trim().length ? SAVE : CANCEL
     },
-    handleFocusTagName () {
+    handleFocusTagName() {
       this.inputState = FOCUS
     },
-    handleBlurTagName () {
+    handleBlurTagName() {
       this.inputState = BLUR
     },
-    handleAddTag () {
+    handleAddTag() {
       this.$store.dispatch('tag/addTag', this.name.trim())
         .then(() => this.handleCancelAddTag())
         .catch(() => this.$refs.nameInput.focus())
     },
-    handleCancelAddTag () {
+    handleCancelAddTag() {
       this.btnState = CANCEL
       this.name = ''
       this.$emit('update:visible', false)

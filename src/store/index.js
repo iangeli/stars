@@ -19,21 +19,21 @@ export default new Vuex.Store({
     showSeting: false,
   },
   mutations: {
-    initGistId (state, gistId) {
+    initGistId(state, gistId) {
       state.gistId = gistId
     },
-    toggleIsEditingTags (state, bool = !state.isEditingTags) {
+    toggleIsEditingTags(state, bool = !state.isEditingTags) {
       state.isEditingTags = bool
     },
-    toggleIsUpdatingData (state, bool = !state.isUpdatingData) {
+    toggleIsUpdatingData(state, bool = !state.isUpdatingData) {
       state.isUpdatingData = bool
     },
-    toggleIsLoadedData (state, bool = !state.isLoadedData) {
+    toggleIsLoadedData(state, bool = !state.isLoadedData) {
       state.isLoadedData = bool
     },
   },
   actions: {
-    initGitstars ({ commit }) {
+    initGitstars({ commit }) {
       return Promise.all([loadReposAndLanguageTags(), loadGitstarsData()])
         .then(([{ repos, languageTags }, content]) => {
           const { tags } = content
@@ -47,7 +47,7 @@ export default new Vuex.Store({
         })
         .catch(() => notifyWarn({ title: i18n.t('failedGetData'), message: i18n.t('tips.refreshPage') }))
     },
-    updateGitstarsData ({ state, commit }, notify) {
+    updateGitstarsData({ state, commit }, notify) {
       commit('toggleIsUpdatingData')
 
       const loadingNotify = Notification.info(Object.assign({}, appConfig.notify, {

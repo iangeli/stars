@@ -34,26 +34,26 @@ export default {
     visible: { type: Boolean, default: false },
     activeRepo: { type: Object, required: true },
   },
-  data () {
+  data() {
     return {
       tagName: '',
     }
   },
   computed: {
-    currentRepoUntaggedTags () {
+    currentRepoUntaggedTags() {
       return this.$store.state.tag.tags
         .filter(tag => !this.activeRepo._customTags.find(({ id }) => id === tag.id))
         .map(({ name }) => name)
     },
   },
   methods: {
-    handleFetchTagSuggestions (inputStr, cb) {
+    handleFetchTagSuggestions(inputStr, cb) {
       inputStr = inputStr.toLowerCase()
       cb(this.currentRepoUntaggedTags
         .filter(name => name.toLowerCase().includes(inputStr))
         .map(name => ({ value: name })))
     },
-    handleAddRepoTag () {
+    handleAddRepoTag() {
       this.$store.dispatch('repo/addRepoTag', this.tagName.trim())
       this.tagName = ''
     },

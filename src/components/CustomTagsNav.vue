@@ -22,14 +22,14 @@ export default {
   computed: {
     ...mapState(['isEditingTags']),
     customTags: {
-      get () {
+      get() {
         return this.$store.state.tag.tags
       },
-      set (value) {
+      set(value) {
         this.$store.commit('tag/initTags', value)
       },
     },
-    dragOptions () {
+    dragOptions() {
       return { disabled: !this.isEditingTags }
     },
   },

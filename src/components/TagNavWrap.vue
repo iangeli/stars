@@ -20,7 +20,7 @@ export default {
     ...mapState('tag', { activeTag: 'active' }),
   },
   methods: {
-    handleSwitchActiveTag () {
+    handleSwitchActiveTag() {
       if (this.isEditingTags) return notifyInfo({ message: this.$t('canNotSwitchTagWhenEdit') })
       this.$store.commit('tag/switchActive', this.tag)
     },
@@ -48,7 +48,6 @@ export default {
 }
 
 .nav-item.active {
-  border-left-color: #7265e6;
   border-bottom-color: transparent;
   background-color: rgba(255, 255, 255, 0.1);
 }

@@ -20,14 +20,14 @@ export default {
     activeTagCategory: { type: Object, required: true },
   },
   computed: {
-    sliderStyle () {
+    sliderStyle() {
       const slidebarWidth = 100 / this.categorys.length
       const index = this.categorys.findIndex(category => category.id === this.activeTagCategory.id)
       return { left: `${index * slidebarWidth}%`, width: `${slidebarWidth}%` }
     },
   },
   methods: {
-    handleSwitchCategory (category) {
+    handleSwitchCategory(category) {
       this.$emit('update:activeTagCategory', category)
     },
   },
@@ -53,8 +53,8 @@ export default {
 .tag-category__slider {
   position: absolute;
   height: 100%;
-  border-top: 1px solid #7265e6;
-  background-color: rgba(255, 255, 255, 0.07);
+  /*border-top: 1px solid #7265e6;*/
+  background-color: rgba(255, 255, 255, 0.1);
   transition: all 0.2s;
 }
 

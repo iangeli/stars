@@ -1,7 +1,6 @@
 <template>
-  <div
-    id="subsidebar"
-    :style="{'width': `${width}px`}"
+  <div id="subsidebar"
+    :style="{width: `${width}px`}"
     @mousedown="mouseDown">
     <template v-if="isLoadedData">
       <sub-sidebar-header
@@ -32,11 +31,11 @@ import config from '@/config'
 export default {
   name: 'sub-sidebar',
   components: { SubSidebarHeader, Repo },
-  created () {
+  created() {
     window.addEventListener('mouseup', this.mouseUp)
     window.addEventListener('mousemove', this.mouseMove)
   },
-  data () {
+  data() {
     return {
       width: 359,
       move: false,
@@ -47,7 +46,7 @@ export default {
   computed: {
     ...mapState(['isLoadedData']),
     ...mapState('repo', { activeRepo: 'active' }),
-    repos () {
+    repos() {
       const { searchValue, sortKey } = this
       return this.$store.getters['repo/reposOfTag']
         .filter(repo => repo.owner.login.toLowerCase().includes(searchValue) || repo.name.toLowerCase().includes(searchValue))
@@ -55,18 +54,18 @@ export default {
     },
   },
   methods: {
-    handleSwitchRepoSort (key) {
+    handleSwitchRepoSort(key) {
       this.sortKey = key
     },
-    mouseDown () {
+    mouseDown() {
       this.move = true
     },
-    mouseMove (event) {
+    mouseMove(event) {
       event.preventDefault()
       if (!this.move) { return }
       this.width = Math.max(this.width + event.movementX, 250)
     },
-    mouseUp () {
+    mouseUp() {
       this.move = false
     },
   },

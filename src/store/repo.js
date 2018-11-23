@@ -16,10 +16,10 @@ export default {
     readme: '',
   },
   getters: {
-    untaggedRepos (state) {
+    untaggedRepos(state) {
       return state.repos.filter(repo => !repo._customTags.length)
     },
-    reposOfTag (state, getters, rootState) {
+    reposOfTag(state, getters, rootState) {
       const { repos } = state
       const { active: tag } = rootState.tag
       const { categoryId, id: tagId, name: tagName } = tag
@@ -32,29 +32,29 @@ export default {
     },
   },
   mutations: {
-    initRepos (state, repos) {
+    initRepos(state, repos) {
       state.repos = repos
     },
-    switchActive (state, repo) {
+    switchActive(state, repo) {
       state.active = repo
     },
-    changeReadme (state, readme) {
+    changeReadme(state, readme) {
       state.readme = readme
     },
-    addRepoTag (state, tag) {
+    addRepoTag(state, tag) {
       state.active._customTags.push(tag)
     },
-    insertRepoTag (state, { repo, tag, tagIndex }) {
+    insertRepoTag(state, { repo, tag, tagIndex }) {
       repo._customTags.splice(tagIndex, 0, tag)
     },
-    popRepoTag (state) {
+    popRepoTag(state) {
       state.active._customTags.pop()
     },
-    deleteRepoTag (state, { repoId, tagIndex }) {
+    deleteRepoTag(state, { repoId, tagIndex }) {
       const repo = state.repos.find(repo => repo.id === repoId)
       repo._customTags.splice(tagIndex, 1)
     },
-    deleteReposTag (state, tagId) {
+    deleteReposTag(state, tagId) {
       state.repos.forEach(repo => {
         const { _customTags: tags } = repo
         const index = tags.findIndex(tag => tag.id === tagId)
@@ -63,7 +63,7 @@ export default {
     },
   },
   actions: {
-    async switchActive ({ state, commit }, repo) {
+    async switchActive({ state, commit }, repo) {
       commit('switchActive', repo)
       commit('changeReadme', '')
 
@@ -96,7 +96,7 @@ export default {
         if (response) commit('changeReadme', response)
       }
     },
-    addRepoTag ({ state, commit, dispatch, rootState }, tagName) {
+    addRepoTag({ state, commit, dispatch, rootState }, tagName) {
       if (rootState.isUpdatingData) return notifyInfo({ message: i18n.t('update.uncompleted') })
 
       const { active: activeRepo } = state
@@ -119,7 +119,7 @@ export default {
         })
         .catch(({ message }) => notifyWarn({ message }))
     },
-    deleteRepoTag ({ state, commit, dispatch, rootState }, { repoId, tagId }) {
+    deleteRepoTag({ state, commit, dispatch, rootState }, { repoId, tagId }) {
       if (rootState.isUpdatingData) return notifyInfo({ message: i18n.t('update.uncompleted') })
 
       const repo = state.repos.find(repo => repo.id === repoId)

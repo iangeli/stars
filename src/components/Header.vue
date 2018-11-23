@@ -11,7 +11,7 @@
 
 export default {
   name: 'header',
-  data () {
+  data() {
     return {
       user: window._gitstars.user,
     }

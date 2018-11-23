@@ -19,7 +19,7 @@ import { notifyInfo } from '@/helper'
 
 export default {
   name: 'repo-tag',
-  data () {
+  data() {
     return {
       active: false,
     }
@@ -32,22 +32,22 @@ export default {
     ...mapState(['isEditingTags']),
   },
   methods: {
-    handleToggleTag () {
+    handleToggleTag() {
       if (this.isEditingTags) return notifyInfo({ message: this.$t('canNotSwitchTagWhenEdit') })
       this.$store.commit('tag/switchActive', this.tag)
     },
-    handleDeleteTag () {
+    handleDeleteTag() {
       document.body.click()
       this.active = true
     },
-    handleCancelDeleteTag () {
+    handleCancelDeleteTag() {
       document.body.click()
     },
-    handleConfirmDeleteTag () {
+    handleConfirmDeleteTag() {
       document.body.click()
       this.$store.dispatch('repo/deleteRepoTag', { repoId: this.repo.id, tagId: this.tag.id })
     },
-    handleHidePopover () {
+    handleHidePopover() {
       this.active = false
     },
   },
@@ -61,7 +61,7 @@ export default {
   margin-right: 0.5em;
 }
 
-.tag.clickable {
+.tag {
   border: none;
 }
 

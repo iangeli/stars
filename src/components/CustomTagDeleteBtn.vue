@@ -16,13 +16,13 @@ export default {
     visible: { type: Boolean, default: false },
   },
   methods: {
-    handleDeleteTag () {
+    handleDeleteTag() {
       document.body.click()
     },
-    handleCancelDeleteTag () {
+    handleCancelDeleteTag() {
       document.body.click()
     },
-    handleConfirmDeleteTag () {
+    handleConfirmDeleteTag() {
       document.body.click()
       this.$store.dispatch('tag/deleteTag', this.tag.id)
     },
