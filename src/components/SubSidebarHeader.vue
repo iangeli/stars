@@ -4,13 +4,13 @@
       <i class="fa fa-search" aria-hidden="true"></i>
       <input
         :value="searchValue"
-        :placeholder="`${$t('developer')} | ${$t('repositoryName')} | @标签`"
+        placeholder='Developer | Repository | Tag'
         type="text"
         class="search-input"
         @input="handleInputSearchValue" />
     </label>
     <el-dropdown class="sort-drapdown" @command="handleSortRepos">
-      <div class="sort-drapdown-link">{{ $t('sort') }}&nbsp;<i class="el-icon-arrow-down"></i></div>
+      <div class="sort-drapdown-link">{{ 'sort' }}&nbsp;<i class="el-icon-arrow-down"></i></div>
       <el-dropdown-menu slot="dropdown" id="subsidebar-header__dropdown-menu">
         <el-dropdown-item v-for="sort in repoSorts" :key="sort.id" :command="sort.sortKey">
           <i :class="sort.icon" class="fa" aria-hidden="true"></i>

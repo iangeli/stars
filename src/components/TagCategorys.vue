@@ -7,7 +7,7 @@
       :class="{ active: category.id === activeTagCategory.id }"
       class="tag-category__item"
       @click="handleSwitchCategory(category)">
-      {{ $t(category.i18nKey) }}
+      {{category.key}}
     </li>
   </ul>
 </template>

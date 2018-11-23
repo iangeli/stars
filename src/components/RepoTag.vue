@@ -2,11 +2,11 @@
   <li class="tag-item" @click.stop="handleToggleTag">
     <el-tag :class="{ clickable: !isEditingTags }" size="small" class="tag">
       <span>{{ tag.name }}</span>
-      <el-popover :title="`${$t('areYouSure')}？`" placement="right" @hide="handleHidePopover">
+      <el-popover title='Are you sure?' placement="right" @hide="handleHidePopover">
         <i v-show="!isEditingTags" :class="{ active: active }" slot="reference" class="tag-delete-btn" @click.stop="handleDeleteTag">&times;</i>
         <footer class="popover-footer">
-          <el-button size="mini" @click="handleCancelDeleteTag">{{ $t('no') }}</el-button>
-          <el-button type="primary" size="mini" @click="handleConfirmDeleteTag">{{ $t('yes') }}</el-button>
+          <el-button size="mini" @click="handleCancelDeleteTag">no</el-button>
+          <el-button type="primary" size="mini" @click="handleConfirmDeleteTag">yes</el-button>
         </footer>
       </el-popover>
     </el-tag>
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     handleToggleTag() {
-      if (this.isEditingTags) return notifyInfo({ message: this.$t('canNotSwitchTagWhenEdit') })
+      if (this.isEditingTags) return notifyInfo({ message: 'Edit state can not switch tag' })
       this.$store.commit('tag/switchActive', this.tag)
     },
     handleDeleteTag() {

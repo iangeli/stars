@@ -6,7 +6,6 @@ import Vue from 'vue'
 import store from '@/store'
 import '@/element-ui'
 import App from '@/App'
-import i18n from '@/i18n'
 import { parseURLSearch } from '@/util'
 import { getGitstarsAccessToken, getUserInfo } from '@/api'
 import appConfig from '@/config'
@@ -69,5 +68,5 @@ accessTokenProcess()
   })
   .then(() => {
     /* eslint-disable no-new */
-    new Vue({ store, i18n, el: '#app', template: '<App/>', components: { App }})
+    new Vue({ store, el: '#app', template: '<App/>', components: { App }})
   })

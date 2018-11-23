@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import { Notification } from 'element-ui'
 import tag from './tag'
 import repo from './repo'
-import i18n from '@/i18n'
 import appConfig from '@/config'
 import { saveGitstarsGist } from '@/api'
 import { loadReposAndLanguageTags, loadGitstarsData, formatReposTag, notifySuccess, notifyWarn, notifyError } from '@/helper'
@@ -45,14 +44,14 @@ export default new Vuex.Store({
 
           return { languageTags }
         })
-        .catch(() => notifyWarn({ title: i18n.t('failedGetData'), message: i18n.t('tips.refreshPage') }))
+        .catch(() => notifyWarn({ title: 'Failed to get data', message: 'Recommend to refresh the page' }))
     },
     updateGitstarsData({ state, commit }, notify) {
       commit('toggleIsUpdatingData')
 
       const loadingNotify = Notification.info(Object.assign({}, appConfig.notify, {
         iconClass: 'fa fa-cog fa-spin fa-fw',
-        message: i18n.t('update.wait'),
+        message: 'Updating. please wait...',
         duration: 0,
       }))
 
@@ -60,11 +59,11 @@ export default new Vuex.Store({
 
       return saveGitstarsGist(gist)
         .then(() => {
-          notifySuccess(notify || { message: i18n.t('update.completed') })
+          notifySuccess(notify || { message: 'Update completed' })
           window.localStorage.setItem(window._gitstars.gistId, JSON.stringify(gist))
         })
         .catch(() => {
-          const message = i18n.t('update.failed')
+          const message = 'Update failed'
           notifyError(notify || { message })
           throw new Error(message)
         })

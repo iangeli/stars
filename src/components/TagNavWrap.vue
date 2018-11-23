@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     handleSwitchActiveTag() {
-      if (this.isEditingTags) return notifyInfo({ message: this.$t('canNotSwitchTagWhenEdit') })
+      if (this.isEditingTags) return notifyInfo({ message: 'Edit state can not switch tag' })
       this.$store.commit('tag/switchActive', this.tag)
     },
   },

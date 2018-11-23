@@ -15,14 +15,14 @@
     <el-autocomplete
       v-model="tagName"
       :fetch-suggestions="handleFetchTagSuggestions"
-      :placeholder="$t('addNewTag')"
+      placeholder='Add New Tag'
       :debounce="30"
       size="small"
       class="repo-tag-input"
       @select="handleAddRepoTag"
       select-when-unmatched>
       <i slot="prefix" class="fa fa-fw fa-lg fa-tag el-input__icon"></i>
-      <el-button slot="append" @click="handleAddRepoTag" class="ttc">{{ $t('add') }}</el-button>
+      <el-button slot="append" @click="handleAddRepoTag" class="ttc">add</el-button>
     </el-autocomplete>
   </header>
 </template>

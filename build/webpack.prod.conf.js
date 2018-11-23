@@ -31,7 +31,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     vuex: 'Vuex',
     axios: 'axios',
     sortablejs: 'Sortable',
-    'vue-i18n': 'VueI18n',
     'babel-polyfill': '_babelPolyfill'
   },
   plugins: [

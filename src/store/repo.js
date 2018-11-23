@@ -1,5 +1,4 @@
 import axios from 'axios'
-import i18n from '@/i18n'
 import appConfig from '@/config'
 import { validateTagName, notifyInfo, notifyWarn } from '@/helper'
 import { getRepoReadme, getRenderedReadme } from '../api'
@@ -97,7 +96,7 @@ export default {
       }
     },
     addRepoTag({ state, commit, dispatch, rootState }, tagName) {
-      if (rootState.isUpdatingData) return notifyInfo({ message: i18n.t('update.uncompleted') })
+      if (rootState.isUpdatingData) return notifyInfo({ message: 'Pre-upgrade has not been completed, please wait ...' })
 
       const { active: activeRepo } = state
       validateTagName(activeRepo._customTags, tagName)
@@ -110,7 +109,7 @@ export default {
 
           dispatch('updateGitstarsData', {
             title: `${activeRepo.owner.login} / ${activeRepo.name}`,
-            message: `${i18n.t('addTag')}: ${name}`,
+            message: `Add Tag: ${name}`,
           }, { root: true })
             .catch(() => {
               commit('popRepoTag')
@@ -120,7 +119,7 @@ export default {
         .catch(({ message }) => notifyWarn({ message }))
     },
     deleteRepoTag({ state, commit, dispatch, rootState }, { repoId, tagId }) {
-      if (rootState.isUpdatingData) return notifyInfo({ message: i18n.t('update.uncompleted') })
+      if (rootState.isUpdatingData) return notifyInfo({ message: 'Pre-upgrade has not been completed, please wait ...' })
 
       const repo = state.repos.find(repo => repo.id === repoId)
       const tagIndex = repo._customTags.findIndex(tag => tag.id === tagId)
@@ -132,7 +131,7 @@ export default {
 
       dispatch('updateGitstarsData', {
         title: `${repo.owner.login} / ${repo.name}`,
-        message: `${i18n.t('deleteTag')}: ${tag.name}`,
+        message: `Delete Tag: ${tag.name}`,
       }, { root: true })
         .catch(() => {
           commit('insertRepoTag', { repo, tag, tagIndex })

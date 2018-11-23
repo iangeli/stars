@@ -1,9 +1,9 @@
 <template>
-  <el-popover :title="`${$t('areYouSure')}？`" placement="right">
+  <el-popover title='Are you sure?' placement="right">
     <i v-show="visible" slot="reference" class="fa fa-times-circle" aria-hidden="true" @click.stop="handleDeleteTag"></i>
     <footer class="popover-footer">
-      <el-button size="mini" @click="handleCancelDeleteTag">{{ $t('no') }}</el-button>
-      <el-button type="primary" size="mini" @click="handleConfirmDeleteTag">{{ $t('yes') }}</el-button>
+      <el-button size="mini" @click="handleCancelDeleteTag">no</el-button>
+      <el-button type="primary" size="mini" @click="handleConfirmDeleteTag">yes</el-button>
     </footer>
   </el-popover>
 </template>

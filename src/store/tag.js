@@ -1,4 +1,3 @@
-import i18n from '@/i18n'
 import appConfig from '@/config'
 import { validateTagName, formatReposTag, notifyInfo, notifyWarn } from '@/helper'
 
@@ -65,7 +64,7 @@ export default {
     },
     async addTag({ state, commit, dispatch, rootState }, tag) {
       if (rootState.isUpdatingData) {
-        const message = i18n.t('update.uncompleted')
+        const message = 'Pre-upgrade has not been completed, please wait ...'
         notifyInfo({ message })
         throw new Error(message)
       }
@@ -75,7 +74,7 @@ export default {
       return validateTagName(state.tags, tag.name)
         .then(name => {
           commit('addTag', tag)
-          dispatch('updateGitstarsData', { message: `${i18n.t('addTag')}: ${name}` }, { root: true })
+          dispatch('updateGitstarsData', { message: `Add Tag: ${name}` }, { root: true })
             .catch(() => commit('popTag'))
         })
         .catch(({ message }) => {

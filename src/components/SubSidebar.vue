@@ -12,12 +12,12 @@
       </ul>
       <div v-show="!repos.length" class="no-match vc-p">
         <i class="fa fa-bell-o fa-3x" aria-hidden="true"></i>
-        <p class="ttc">{{ $t('noMatchingReposigory') }}</p>
+        <p class="ttc">No matching repository</p>
       </div>
     </template>
     <div v-else class="loader vc-p">
       <i class="fa fa-cog fa-spin fa-2x"></i>
-      <p class="ttc">{{ $t('gettingStarredRepository') }}</p>
+      <p class="ttc">Getting starred repositories ...</p>
     </div>
   </div>
 </template>
@@ -81,7 +81,7 @@ export default {
     flex-direction: column;
 
     background-color: #fbfbfb;
-    cursor: col-resize;
+    border-right: 1px solid #fbfbfb;
     .loader, .no-match {
       position: absolute;
       width: 100%;

@@ -1,6 +1,6 @@
 const isProduction = process.env.NODE_ENV === 'production'
-const clientId = isProduction ? '75cf00b02deb33e63424' : 'bf9d4f20def51dbd5c5c'
-const clientSecret = isProduction ? '6fa564cbd46f6bdfa1fb81ddce5503dcbe4ab4c4' : 'e8f5bc4369f64b05d052819047ca9d5e1d8b2e8f'
+const clientId = isProduction ? '75a8420544b014947848' : 'b83c98cebb51903b8417'
+const clientSecret = isProduction ? '4c8c8465424312c7a1791669e617b522f8b304b3' : '61ab3ee44e5e437ab02730b8f5d1e5e7b698381d'
 
 export default {
   clientId,
@@ -19,17 +19,17 @@ export default {
     position: 'bottom-right',
   },
   starredReposPerPage: 100, // Github 最大值
-  i18nLocaleKey: 'gitstars_i18n_local',
+
   defaultTags: {
-    all: { id: 0, i18nKey: 'allRepos', icon: 'fa-bars' },
-    untagged: { id: -1, i18nKey: 'untaggedRepos', icon: 'fa-star-o' },
+    all: { id: 0, icon: 'fa-bars', key: 'All' },
+    untagged: { id: -1, icon: 'fa-star-o', key: 'Untagged' },
   },
   tagCategorys: {
-    custom: { id: 0, name: '自定义', i18nKey: 'custom' },
-    language: { id: 1, name: '语言', i18nKey: 'language' },
+    custom: { id: 0, name: '自定义', key: 'custom' },
+    language: { id: 1, name: '语言', key: 'language' },
   },
   repoSorts: {
-    time: { id: 0, sortKey: '_sortTime', name: '时间', icon: 'fa-clock-o' },
+    time: { id: 0, sortKey: '_sortTime', name: 'Time', icon: 'fa-clock-o' },
     star: { id: 1, sortKey: 'stargazers_count', name: 'star', icon: 'fa-star' },
   },
 }

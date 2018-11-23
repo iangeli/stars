@@ -8,7 +8,7 @@
       key="ok"
       class="nav-caption__operate-btn nav-caption__ok-btn"
       @click="handleCompleteEditTags">
-      <span>完成</span>
+      <span>Done</span>
     </div>
     <div
       v-else

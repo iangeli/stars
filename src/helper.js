@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { Notification } from 'element-ui'
-import i18n from '@/i18n'
 import appConfig from '@/config'
 import { getStarredRepos, getGitstarsGist, getUserGists, createGitstarsGist } from '@/api'
 
@@ -114,8 +113,8 @@ export const formatReposTag = (repos, tags) => {
 }
 
 export const validateTagName = async (tags, name) => {
-  if (!name) throw new Error(i18n.t('tagNameCannotEmpty'))
-  if (tags.find(tag => tag.name === name)) throw new Error(i18n.t('tagNameAlreadyExist'))
+  if (!name) throw new Error('Tag name can not be empty')
+  if (tags.find(tag => tag.name === name)) throw new Error('This tag already exists')
   return name
 }
 
