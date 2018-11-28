@@ -11,8 +11,8 @@ export default {
     code: 'gitstars_code',
     user: 'gitstars_user',
   },
-  filename: 'gitstars.json',
-  description: `github stars manager for ${process.env.NODE_ENV}`,
+  filename: `${isProduction ? 'stars.json' : 'stars_dev.json'}`,
+  description: `Stars Manager Database for ${isProduction ? 'Production' : 'Development'}`,
   notify: {
     duration: 3000,
     showClose: false,

@@ -20,8 +20,7 @@
       </div>
       <transition name="telescopic">
         <div v-show="isLoadedData && !customTags.length && isCustomCategoryActive" class="no-tag vc-p">
-          <i class="fa fa-hand-o-up fa-2x" aria-hidden="true"></i>
-          <p>Add</p>
+          <i class="fa fa-eercast fa-2x" aria-hidden="true"></i>
         </div>
       </transition>
       <transition name="slide-up">

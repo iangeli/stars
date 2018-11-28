@@ -1,8 +1,11 @@
 <template>
     <div class="user-info">
-      <a :href="`${user.html_url}?tab=repositories`" target="_blank" rel="noopener noreferrer">
+      <a class="user" :href="`${user.html_url}?tab=repositories`" target="_blank" rel="noopener noreferrer">
         <img :src="user.avatar_url" class="user-avatar">
         <div class="user-name">{{ user.name }}</div>
+      </a>
+      <a class="db" :href="`https://gist.github.com/${user.login}`" target="_blank">
+        <i class="fa fa-database" aria-hidden="true"></i>
       </a>
     </div>
 </template>
@@ -25,6 +28,13 @@ export default {
   width: 100%
   height: 50px
 
+  display: flex
+  align-items: center
+  .user
+    flex: 1 1 auto
+  .db
+    margin-right: 16px
+    color: white
 .user-avatar
   display: inline-block
   height: 40px

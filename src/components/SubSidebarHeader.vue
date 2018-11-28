@@ -10,7 +10,7 @@
         @input="handleInputSearchValue" />
     </label>
     <el-dropdown class="sort-drapdown" @command="handleSortRepos">
-      <div class="sort-drapdown-link">{{ 'sort' }}&nbsp;<i class="el-icon-arrow-down"></i></div>
+      <div class="sort-drapdown-link">sort&nbsp;<i class="el-icon-arrow-down"></i></div>
       <el-dropdown-menu slot="dropdown" id="subsidebar-header__dropdown-menu">
         <el-dropdown-item v-for="sort in repoSorts" :key="sort.id" :command="sort.sortKey">
           <i :class="sort.icon" class="fa" aria-hidden="true"></i>
@@ -49,7 +49,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #subsidebar-header {
   display: flex;
   flex: 0 0 44px;
@@ -79,12 +79,21 @@ export default {
   outline: none;
   background-color: #fcfcfc;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  /*placeho*/
+  &::placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+  &::-webkit-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+  &::-moz-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
+  &::-ms-input-placeholder{
+    color: rgba(0, 0, 0, 0.25);
+  }
 }
 
-.search-input::-webkit-input-placeholder, .search-input::-moz-placeholder, .search-input::-ms-input-placeholder{
-  color: rgba(90,90,90,0.3);
-}
+
 
 .fa-search {
   position: absolute;

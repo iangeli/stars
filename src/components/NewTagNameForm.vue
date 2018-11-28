@@ -13,8 +13,8 @@
       @keyup.enter.prevent="handleAddTag"
       @keyup.esc="handleCancelAddTag">
       <div class="tag-form__operate" :class="btnState">
-        <button type="button" class="tag-form__operate-btn save" @click="handleAddTag">{{ 'save' }}</button>
-        <button type="button" class="tag-form__operate-btn cancel" @click="handleCancelAddTag">{{ 'cancel' }}</button>
+        <button type="button" class="tag-form__operate-btn save" @click="handleAddTag">save</button>
+        <button type="button" class="tag-form__operate-btn cancel" @click="handleCancelAddTag">cancel</button>
       </div>
   </form>
 </template>
