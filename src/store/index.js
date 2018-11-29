@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import { Notification } from 'element-ui'
 import tag from './tag'
 import repo from './repo'
+import settings from './settings'
 import appConfig from '@/config'
 import { saveGitstarsGist } from '@/api'
 import { loadReposAndLanguageTags, loadGitstarsData, formatReposTag, notifySuccess, notifyWarn, notifyError } from '@/helper'
@@ -73,5 +74,5 @@ export default new Vuex.Store({
         })
     },
   },
-  modules: { tag, repo },
+  modules: { settings, tag, repo },
 })

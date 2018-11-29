@@ -10,6 +10,7 @@ export default {
     accessToken: 'gitstars_access_token',
     code: 'gitstars_code',
     user: 'gitstars_user',
+    settings: 'gitstars_settings',
   },
   filename: `${isProduction ? 'stars.json' : 'stars_dev.json'}`,
   description: `Stars Manager Database for ${isProduction ? 'Production' : 'Development'}`,

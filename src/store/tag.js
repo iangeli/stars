@@ -5,7 +5,7 @@ export default {
   namespaced: true,
   state: {
     tags: [],
-    active: appConfig.defaultTags.all,
+    active: appConfig.defaultTags.all
   },
   mutations: {
     initTags(state, tags) {

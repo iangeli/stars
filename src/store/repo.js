@@ -12,7 +12,7 @@ export default {
   state: {
     repos: [],
     active: {},
-    readme: '',
+    readme: ''
   },
   getters: {
     untaggedRepos(state) {

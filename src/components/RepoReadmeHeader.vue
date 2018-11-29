@@ -26,7 +26,7 @@
         <el-button slot="append" @click="handleAddRepoTag" class="ttc">add</el-button>
       </el-autocomplete>
     </div>
-    <div v-if="activeRepo._customTags.length > 0" class="bottom">
+    <div v-if="showTagsInReadme && activeRepo._customTags && activeRepo._customTags.length > 0" class="bottom">
       <repo-tag v-for="tag of activeRepo._customTags" :key="tag.id" :repo="activeRepo" :tag="tag" />
     </div>
   </header>
@@ -34,6 +34,7 @@
 
 <script>
 import RepoTag from './RepoTag'
+import { mapState } from 'vuex'
 
 export default {
   name: 'repo-readme-header',
@@ -48,6 +49,9 @@ export default {
     }
   },
   computed: {
+    ...mapState({
+      showTagsInReadme: state => state.settings.data.showTagsInReadme
+    }),
     currentRepoUntaggedTags() {
       return this.$store.state.tag.tags
         .filter(tag => !this.activeRepo._customTags.find(({ id }) => id === tag.id))

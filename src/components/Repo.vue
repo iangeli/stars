@@ -9,7 +9,7 @@
     <p class="repo-desc">{{ repo.description }}</p>
 
     <footer class="footer">
-      <ul class="tag-list">
+      <ul class="tag-list" v-if="showTagsInNavigate">
         <repo-tag v-for="tag of repo._customTags" :key="tag.id" :repo="repo" :tag="tag" />
       </ul>
       <div class="language" v-if="repo.language && repo.language.length > 0">
@@ -22,6 +22,7 @@
 
 <script>
 import RepoTag from './RepoTag'
+import { mapState } from 'vuex'
 
 export default {
   name: 'repo',
@@ -30,6 +31,9 @@ export default {
     repo: { type: Object, required: true },
   },
   computed: {
+    ...mapState({
+      showTagsInNavigate: state => state.settings.data.showTagsInNavigate
+    }),
     color: function() {
       const defautColor = {
         'C': 'rgb(85,85,85)',

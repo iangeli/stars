@@ -16,7 +16,7 @@
       key="edit"
       class="nav-caption__operate-btn"
       @click="handleEditTags">
-      <i class="fa fa-cog" aria-hidden="true"></i>
+      <i class="fa fa-minus-square" aria-hidden="true"></i>
     </div>
   </header>
 </template>
