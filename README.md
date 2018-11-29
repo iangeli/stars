@@ -10,7 +10,7 @@ Pure front-end implementation, no server and database, your github is everything
 [![GitHub license](https://img.shields.io/github/license/Monine/gitstars.svg)](https://github.com/Monine/gitstars/blob/master/LICENSE)
 > Github stars repositories manager, which every developer owns.
 Welcome to [https://monine.github.io/gitstars/](https://monine.github.io/gitstars/) to enjoy the fun, more welcome to provide advice in the [Issues](https://github.com/Monine/gitstars/issues) after the experience.
-![gitstars](https://github.com/iangeli/stars/blob/dev/static/img/sample.png?raw=true)
+![gitstars](https://i.imgur.com/N7wkd69.png)
 *Thanks to [imsun](https://github.com/imsun) for get access token service*
 ## Technology stack
 - [Vue](https://cn.vuejs.org/)

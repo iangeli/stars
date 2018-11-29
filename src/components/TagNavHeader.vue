@@ -37,8 +37,8 @@ export default {
     ...mapState('tag', { customTags: 'tags' }),
   },
   watch: {
-    customTags: function(newVal) {
-      if (newVal.length === 0) {
+    customTags(newVal) {
+      if (newVal && newVal.length === 0) {
         this.handleCompleteEditTags()
       }
     }
