@@ -36,6 +36,13 @@ export default {
     ...mapState(['isEditingTags', 'isLoadedData']),
     ...mapState('tag', { customTags: 'tags' }),
   },
+  watch: {
+    customTags: function(newVal) {
+      if (newVal.length === 0) {
+        this.handleCompleteEditTags()
+      }
+    }
+  },
   methods: {
     handleAddNewTag() {
       if (this.isEditingTags || this.tagNameFormVisible) return

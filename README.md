@@ -23,9 +23,9 @@ Welcome to read the source code, make comments.
 ## Introduction  
 Interface style mimics [Astral](https://app.astralapp.com).  
 
-**There is no database**, when you first visit stars, a gist project with the file `gitstars.json` will be created within your [github gists](https://gist.github.com) (There are two on the map because the development needs, as a user, you will only have one).
+**There is no database**, when you first visit stars, a gist project with the file `stars.json` will be created within your [github gists](https://gist.github.com) (There are two on the map because the development needs, as a user, you will only have one).
   
-All your tag management data is stored in the `gitstars.json` file, meaning that all your tag management operations are modifying the file, no database, everything on github and yours.
+All your tag management data is stored in the `stars.json` file, meaning that all your tag management operations are modifying the file, no database, everything on github and yours.
   
 However, every time you use the github API to get the management data relatively slowly, and the data you get from the github API has a 60-second cache (check the Response Header Cache-Control field). Which means you refresh the page after you've modified the management data will find that the data is still before the amendment, for which I have e-mail asking github how to cancel the cache, the reply is unable to cancel ...
   
