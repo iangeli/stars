@@ -1,7 +1,5 @@
 <template>
-  <div id="subsidebar"
-    :style="{width: `${width}px`}"
-    @mousedown="mouseDown">
+  <div id="subsidebar">
     <template v-if="isLoadedData">
       <sub-sidebar-header
         :searchValue.sync="searchValue"
@@ -31,14 +29,8 @@ import config from '@/config'
 export default {
   name: 'sub-sidebar',
   components: { SubSidebarHeader, Repo },
-  created() {
-    window.addEventListener('mouseup', this.mouseUp)
-    window.addEventListener('mousemove', this.mouseMove)
-  },
   data() {
     return {
-      width: 359,
-      move: false,
       searchValue: '',
       sortKey: config.repoSorts.time.sortKey,
     }
@@ -49,24 +41,24 @@ export default {
     repos() {
       const { searchValue, sortKey } = this
       return this.$store.getters['repo/reposOfTag']
-        .filter(repo => repo.owner.login.toLowerCase().includes(searchValue) || repo.name.toLowerCase().includes(searchValue))
-        .sort((a, b) => b[sortKey] - a[sortKey])
+        .filter(repo => {
+          const owner = repo.owner.login.toLowerCase().includes(searchValue)
+          if (owner) { return true }
+          const repoName = repo.name && repo.name.toLowerCase().includes(searchValue)
+          if (repoName) { return true }
+          const language = repo.language && repo.language.toLowerCase().includes(searchValue)
+          if (language) { return true }
+          const description = repo.description && repo.description.toLowerCase().includes(searchValue)
+          if (description) { return true }
+          const tag = repo._customTags && repo._customTags.find(tag => tag.name.toLowerCase().includes(searchValue)) !== undefined
+          if (tag) { return true }
+          return false
+        }).sort((a, b) => b[sortKey] - a[sortKey])
     },
   },
   methods: {
     handleSwitchRepoSort(key) {
       this.sortKey = key
-    },
-    mouseDown() {
-      this.move = true
-    },
-    mouseMove(event) {
-      event.preventDefault()
-      if (!this.move) { return }
-      this.width = Math.max(this.width + event.movementX, 250)
-    },
-    mouseUp() {
-      this.move = false
     },
   },
 }
@@ -76,6 +68,7 @@ export default {
   #subsidebar {
     position: relative;
     height: 100%;
+    width: 359px;
 
     display: flex;
     flex-direction: column;

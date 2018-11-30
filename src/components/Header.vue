@@ -27,7 +27,7 @@
     data() {
       return {
         user: window._gitstars.user,
-        showSettingDialog: true,
+        showSettingDialog: false,
       }
     },
     methods: {
