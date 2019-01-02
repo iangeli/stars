@@ -30,6 +30,9 @@ export default {
   },
   computed: {
     ...mapState(['isEditingTags']),
+    ...mapState({
+      deleteTagDirect: state => state.settings.data.deleteTagDirect
+    }),
   },
   methods: {
     handleToggleTag() {
@@ -37,8 +40,12 @@ export default {
       this.$store.commit('tag/switchActive', this.tag)
     },
     handleDeleteTag() {
-      document.body.click()
-      this.active = true
+      if (this.deleteTagDirect) {
+        this.$store.dispatch('tag/deleteTag', this.tag.id)
+      } else {
+        document.body.click()
+        this.active = true
+      }
     },
     handleCancelDeleteTag() {
       document.body.click()

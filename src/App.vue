@@ -50,15 +50,14 @@ export default {
   flex-direction: row;
   justify-content: flex-start;
   .sidebar {
-    flex: 0 0 auto;
-    width: 300px;
+    flex: 0 7 300px;
     height: 100%;
   }
   .repobar{
-    flex: 0 0 auto;
+    flex: 0 9 359px;
   }
   .readme{
-    flex: 1 1;
+    flex: 1 30 auto;
   }
 }
 

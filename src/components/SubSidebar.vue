@@ -67,8 +67,9 @@ export default {
 <style scoped lang="scss">
   #subsidebar {
     position: relative;
+    box-sizing: border-box;
     height: 100%;
-    width: 359px;
+    overflow-x: hidden;
 
     display: flex;
     flex-direction: column;

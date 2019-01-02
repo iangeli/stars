@@ -5,7 +5,8 @@ export default {
   state: {
     data: JSON.parse(window.localStorage.getItem(appConfig.localStorageKeys.settings)) || {
       showTagsInReadme: true,
-      showTagsInNavigate: true
+      showTagsInNavigate: true,
+      deleteTagDirect: false
     }
   },
   mutations: {

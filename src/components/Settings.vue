@@ -10,11 +10,14 @@
     <el-form-item label="Database Name: ">
       {{fileName}}
     </el-form-item>
-    <el-form-item label="Show Tags in Navigate: ">
+    <el-form-item label="Show tags in Navigate: ">
       <el-switch v-model="settings.showTagsInNavigate"></el-switch>
     </el-form-item>
-    <el-form-item label="Show Tags in ReadMe: ">
+    <el-form-item label="Show tags in ReadMe: ">
       <el-switch v-model="settings.showTagsInReadme"></el-switch>
+    </el-form-item>
+    <el-form-item label="Delete tag directly: ">
+      <el-switch v-model="settings.deleteTagDirect"></el-switch>
     </el-form-item>
   </el-form>
 </template>
@@ -37,13 +40,9 @@
         return appConfig.filename
       }
     },
-    created() {
-      console.log(this.settings)
-    },
     updated() {
       this.$store.dispatch('settings/updateSettings', this.settings)
     },
-
   }
 </script>
 

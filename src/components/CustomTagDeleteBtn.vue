@@ -9,15 +9,24 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'custom-tag-nav',
   props: {
     tag: { type: Object, required: true },
     visible: { type: Boolean, default: false },
   },
+  computed: {
+    ...mapState({
+      deleteTagDirect: state => state.settings.data.deleteTagDirect
+    }),
+  },
   methods: {
     handleDeleteTag() {
       document.body.click()
+      if (this.deleteTagDirect) {
+        this.$store.dispatch('tag/deleteTag', this.tag.id)
+      }
     },
     handleCancelDeleteTag() {
       document.body.click()

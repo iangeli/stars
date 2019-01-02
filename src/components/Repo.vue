@@ -80,6 +80,10 @@ export default {
 
 <style scoped lang="scss">
 .repo-item {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+
   padding: 15px;
   border-bottom: 1px solid #e9e9e9;
   cursor: pointer;

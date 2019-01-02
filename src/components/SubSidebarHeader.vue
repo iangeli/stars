@@ -93,8 +93,6 @@ export default {
   }
 }
 
-
-
 .fa-search {
   position: absolute;
   left: 22px;
