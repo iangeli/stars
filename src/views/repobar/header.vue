@@ -10,9 +10,9 @@
         @input="handleInputSearchValue" />
     </label>
     <el-dropdown class="sort-drapdown" @command="handleSortRepos">
-      <div class="sort-drapdown-link">sort&nbsp;<i class="el-icon-arrow-down"></i></div>
+      <div class="sort-drapdown-link">{{current}}&nbsp;<i class="el-icon-arrow-down"></i></div>
       <el-dropdown-menu slot="dropdown" id="subsidebar-header__dropdown-menu">
-        <el-dropdown-item v-for="sort in repoSorts" :key="sort.id" :command="sort.sortKey">
+        <el-dropdown-item v-for="sort in repoSorts" :key="sort.id" :command="sort">
           <i :class="sort.icon" class="fa" aria-hidden="true"></i>
           <span class="subsidebar-header__dropdown-menu--text">{{ sort.name }}</span>
         </el-dropdown-item>
@@ -32,6 +32,7 @@ export default {
   },
   data() {
     return {
+      current: 'SORT',
       repoSorts: appConfig.repoSorts,
     }
   },
@@ -42,8 +43,9 @@ export default {
     handleInputSearchValue(event) {
       this.$emit('update:searchValue', event.target.value.toLowerCase())
     },
-    handleSortRepos(key) {
-      this.$emit('onSwitchRepoSort', key)
+    handleSortRepos(sort) {
+      this.current = sort.name
+      this.$emit('onSwitchRepoSort', sort.sortKey)
     },
   },
 }
