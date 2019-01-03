@@ -1,5 +1,5 @@
 <template>
-  <header class="repo-readme__header">
+  <div class="repo-readme__header">
     <div class="top">
       <h3 v-if="visible" class="repo-title">
         <a :href="activeRepo.html_url" target="_blank" rel="noopener noreferrer">
@@ -27,17 +27,14 @@
         size="mini"
         class="repo-tag-input"
         @select="confirmInputTag"
-
         @blur="cancelInputTag"
         @keyup.enter.native="confirmInputTag"
         @keyup.esc.native="cleanInputTag">
-
-        select-when-unmatched>
         <i slot="prefix" class="fa fa-fw fa-lg fa-tag el-input__icon"></i>
       </el-autocomplete>
     </div>
 
-  </header>
+  </div>
 </template>
 
 <script>

@@ -1,9 +1,11 @@
 <template>
   <li class="repo-item" @click="handleSwitchActiveRepo">
-    <div class="repo-title">
-      <a class="user" :href="repo.owner.html_url" target="_blank" rel="noopener noreferrer">{{ repo.owner.login }}</a>
-      <span class="split">/</span>
-      <a class="repo" :href="repo.html_url" target="_blank" rel="noopener noreferrer">{{ repo.name }}</a>
+    <div class="header">
+      <div class="titleWrapper">
+        <a class="repo" :href="repo.html_url" target="_blank" rel="noopener noreferrer">{{ repo.name }}</a>
+        <a class="user" :href="repo.owner.html_url" target="_blank" rel="noopener noreferrer"><i class="fa
+fa-user" aria-hidden="true"></i>{{ repo.owner.login }}</a>
+      </div>
       <span class="star"><i class="fa fa-star" aria-hidden="true"></i> {{ manageNum(repo.stargazers_count) }}</span>
     </div>
     <p class="repo-desc">{{ repo.description }}</p>
@@ -93,38 +95,49 @@ export default {
   }
 }
 
-.repo-title {
+.header {
   position: relative;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   font-size: 16px;
 
   overflow: hidden;
-  .user{
-    font-weight: 400;
-  }
-  .split {
-    font-weight: 500;
-    color: #586069;
-    margin: 0 5px;
-  }
-  .repo {
-    flex: 1 1;
-    font-weight: 600;
+
+  .titleWrapper {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+
+    .repo {
+      font-weight: 600;
+    }
+
+    .user{
+      margin-top: 3px;
+      font-weight: 400;
+      color: #586069;
+      font-size: 13px;
+      .fa-user {
+        margin-right: 7px;
+        margin-left: 3px;
+
+      }
+    }
   }
   .star {
-    float: right;
+    flex: 0 0 auto;
     margin-left: 10px;
-    color: #586069;
+    color: #5a5a5a;
     font-size: 12px;
   }
 }
 
 .repo-desc {
+  margin: 7px 0;
   font-size: 12px;
   line-height: 1.5;
-  color: #5a5a5a;
+  color: #828282;
 }
 
 .footer {

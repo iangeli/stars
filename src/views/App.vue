@@ -54,10 +54,10 @@ export default {
     height: 100%;
   }
   .repobar{
-    flex: 0 9 359px;
+    flex: 0 9 354px;
   }
   .readme{
-    flex: 1 30 auto;
+    flex: 1 30 785px;
   }
 }
 

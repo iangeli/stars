@@ -1,5 +1,5 @@
 <template>
-  <header v-show="isLoadedData && isCustomCategoryActive" class="nav-caption">
+  <div v-show="isLoadedData && isCustomCategoryActive" class="nav-caption">
     <div :class="{ disabled: isEditingTags || tagNameFormVisible }" class="nav-caption__operate-btn" @click="handleAddNewTag">
       <i class="fa fa-plus-square" aria-hidden="true"></i>
     </div>
@@ -18,7 +18,7 @@
       @click="handleEditTags">
       <i class="fa fa-minus-square" aria-hidden="true"></i>
     </div>
-  </header>
+  </div>
 </template>
 
 <script>
