@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import Sidebar from './components/Sidebar'
-import Repobar from './components/SubSidebar'
-import RepoReadme from './components/RepoReadme'
-import appConfig from './config'
+import Sidebar from './sidebar'
+import Repobar from './repobar'
+import RepoReadme from './readme'
+import appConfig from '../js/config'
 
 const { defaultTags } = appConfig
 
@@ -64,6 +64,6 @@ export default {
 </style>
 
 <style>
-@import './css/element-ui.css';
-@import './css/app.css';
+@import '../css/element-ui.css';
+@import '../css/app.css';
 </style>

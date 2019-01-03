@@ -1,7 +1,7 @@
 import axios from 'axios'
-import appConfig from '@/config'
-import { validateTagName, notifyInfo, notifyWarn } from '@/helper'
-import { getRepoReadme, getRenderedReadme } from '../api'
+import appConfig from '@/js/config'
+import { validateTagName, notifyInfo, notifyWarn } from '@/help/index'
+import { getRepoReadme, getRenderedReadme } from '@/api/index.js'
 
 let repoReadmeSource = axios.CancelToken.source()
 let renderedReadmeSource = axios.CancelToken.source()

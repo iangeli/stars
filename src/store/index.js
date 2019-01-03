@@ -4,9 +4,9 @@ import { Notification } from 'element-ui'
 import tag from './tag'
 import repo from './repo'
 import settings from './settings'
-import appConfig from '@/config'
-import { saveGitstarsGist } from '@/api'
-import { loadReposAndLanguageTags, loadGitstarsData, formatReposTag, notifySuccess, notifyWarn, notifyError } from '@/helper'
+import appConfig from '@/js/config'
+import { saveGitstarsGist } from '@/api/index.js'
+import { loadReposAndLanguageTags, loadGitstarsData, formatReposTag, notifySuccess, notifyWarn, notifyError } from '@/help/index'
 
 if (process.env.NODE_ENV !== 'production') Vue.use(Vuex)
 

@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import RepoTag from './RepoTag'
+import RepoTag from '../repotag'
 import { mapState } from 'vuex'
 
 export default {

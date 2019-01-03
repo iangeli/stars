@@ -1,5 +1,5 @@
-import appConfig from '@/config'
-import { validateTagName, formatReposTag, notifyInfo, notifyWarn } from '@/helper'
+import appConfig from '@/js/config'
+import { validateTagName, formatReposTag, notifyInfo, notifyWarn } from '@/help/index'
 
 export default {
   namespaced: true,

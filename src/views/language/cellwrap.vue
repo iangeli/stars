@@ -7,7 +7,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { notifyInfo } from '@/helper'
+import { notifyInfo } from '@/help/index'
 
 export default {
   name: 'tag-nav-wrap',

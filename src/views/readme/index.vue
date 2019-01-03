@@ -19,7 +19,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import RepoReadmeHeader from './RepoReadmeHeader'
+import RepoReadmeHeader from './header'
 
 export default {
   name: 'repo-readme',

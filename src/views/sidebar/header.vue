@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import Settings from './Settings.vue'
+  import Settings from '../setting/index.vue'
 
   export default {
     name: 'header',

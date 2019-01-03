@@ -1,14 +1,14 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import 'babel-polyfill'
-import '@/polyfill'
+import '@/help/polyfill'
 import Vue from 'vue'
 import store from '@/store'
-import '@/element-ui'
-import App from '@/App'
-import { parseURLSearch } from '@/util'
-import { getGitstarsAccessToken, getUserInfo } from '@/api'
-import appConfig from '@/config'
+import '@/help/element-ui'
+import App from '@/views/App'
+import { parseURLSearch } from '@/help/index'
+import { getGitstarsAccessToken, getUserInfo } from '@/api/index.js'
+import appConfig from '@/js/config'
 
 Vue.config.productionTip = false
 
@@ -56,7 +56,7 @@ accessTokenProcess()
     const gitstarsUser = window.localStorage.getItem(localStorageKeys.user)
 
     /**
-     * 使用 axios 调用接口时做了请求拦截（api.js）
+     * 使用 axios 调用接口时做了请求拦截（index.js）
      * 请求拦截需要使用到 window._gitstars.accessToken
      * 所以下面代码两行代码不能写在一起：`window._gitstars = { accessToken, user: gitstarsUser ? JSON.parse(gitstarsUser) : await getUserInfo() }`
      * getUserInfo 接口调用时无法获取到 window._gitstars.accessToken 的值

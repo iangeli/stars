@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Notification } from 'element-ui'
-import appConfig from '@/config'
-import { getStarredRepos, getGitstarsGist, getUserGists, createGitstarsGist } from '@/api'
+import appConfig from '@/js/config'
+import { getStarredRepos, getGitstarsGist, getUserGists, createGitstarsGist } from '@/api/index.js'
 
 export const loadReposAndLanguageTags = async (page = 1) => {
   const repos = []
@@ -122,3 +122,17 @@ export const notifySuccess = (notify) => Notification.success(Object.assign({}, 
 export const notifyInfo = (notify) => Notification.info(Object.assign({}, notify, appConfig.notify))
 export const notifyWarn = (notify) => Notification.warning(Object.assign({}, notify, appConfig.notify))
 export const notifyError = (notify) => Notification.error(Object.assign({}, notify, appConfig.notify))
+
+export const parseURLSearch = (searchStr = window.location.search) => {
+  const search = {}
+
+  if (!searchStr.length) return search
+  if (searchStr[0] === '?') searchStr = searchStr.slice(1)
+
+  const kvs = searchStr.split('&')
+  for (const kv of kvs) {
+    const skv = kv.split('=')
+    search[skv[0]] = decodeURIComponent(skv[1])
+  }
+  return search
+}

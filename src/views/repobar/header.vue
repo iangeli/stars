@@ -23,7 +23,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import appConfig from '@/config'
+import appConfig from '@/js/config'
 
 export default {
   name: 'sub-sidebar-header',

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TagNavWrap from './TagNavWrap'
+import TagNavWrap from './cellwrap'
 
 export default {
   name: 'tags-nav',

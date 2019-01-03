@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { notifyWarn } from '@/helper'
+import { notifyWarn } from '@/help/index'
 
 let preName = ''
 let isChangeTagNameByEnter = false

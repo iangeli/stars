@@ -12,9 +12,9 @@
 <script>
 import { mapState } from 'vuex'
 import Draggable from 'vuedraggable'
-import TagNavWrap from './TagNavWrap'
-import CustomTagLabel from './CustomTagLabel'
-import CustomTagDeleteBtn from './CustomTagDeleteBtn'
+import TagNavWrap from '../language/cellwrap'
+import CustomTagLabel from './editLb'
+import CustomTagDeleteBtn from './deleteBtn'
 
 export default {
   name: 'cutom-tags-nav',

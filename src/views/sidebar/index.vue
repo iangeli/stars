@@ -36,13 +36,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import TagsNav from './TagsNav'
-import TagNavHeader from './TagNavHeader'
-import NewTagNameForm from './NewTagNameForm'
-import CustomTagsNav from './CustomTagsNav'
-import TagCategorys from './TagCategorys'
-import appConfig from '@/config'
-import LayoutHeader from './Header'
+import TagsNav from '../language'
+import TagNavHeader from './addOrDelete'
+import NewTagNameForm from './tagInput'
+import CustomTagsNav from '../custombar'
+import TagCategorys from './footer'
+import appConfig from '@/js/config'
+import LayoutHeader from './header'
 
 export default {
   name: 'sidebar',

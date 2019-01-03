@@ -22,9 +22,9 @@
 
 <script>
 import { mapState } from 'vuex'
-import SubSidebarHeader from './SubSidebarHeader'
-import Repo from './Repo'
-import config from '@/config'
+import SubSidebarHeader from './header'
+import Repo from '../../components/repocell'
+import config from '@/js/config'
 
 export default {
   name: 'sub-sidebar',

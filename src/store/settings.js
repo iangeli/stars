@@ -1,4 +1,4 @@
-import appConfig from '@/config'
+import appConfig from '@/js/config'
 
 export default {
   namespaced: true,
