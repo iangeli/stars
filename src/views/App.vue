@@ -1,30 +1,36 @@
 <template>
   <div id="app">
-    <sidebar class="sidebar"
-             :defaultTags="defaultTags"
-             :languageTags="languageTags"
+    <sidebar
+      class="sidebar"
+      :defaultTags="defaultTags"
+      :languageTags="languageTags"
     ></sidebar>
     <repobar class="repobar"></repobar>
     <repo-readme class="readme"></repo-readme>
+    <bubble
+      :class="['bubble',{'rotate': rotate}]"
+      @click.native="rotateClick"
+    >&#376;</bubble>
   </div>
-
 </template>
 
 <script>
 import Sidebar from './sidebar'
 import Repobar from './repobar'
 import RepoReadme from './readme'
+import Bubble from '@/components/dragview'
 import appConfig from '../js/config'
 
 const { defaultTags } = appConfig
 
 export default {
   name: 'App',
-  components: { Sidebar, Repobar, RepoReadme },
+  components: { Sidebar, Repobar, RepoReadme, Bubble },
   data() {
     return {
       show: true,
       languageTags: [],
+      rotate: false
     }
   },
   computed: {
@@ -34,10 +40,17 @@ export default {
         Object.assign({}, defaultTags.untagged, { repos: this.$store.getters['repo/untaggedRepos'] }),
       ]
     },
+
   },
   mounted() {
     this.$store.dispatch('initGitstars').then(tags => Object.assign(this, tags))
   },
+  methods: {
+    rotateClick() {
+      console.log('---------')
+      this.rotate = !this.rotate
+    }
+  }
 }
 </script>
 
@@ -58,6 +71,24 @@ export default {
   }
   .readme{
     flex: 1 30 785px;
+  }
+  .bubble {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+
+    box-shadow: 0 0 10px 4px white, 0 0 20px 4px rgb(3,102,214);
+    color: rgb(3,102,214);
+    text-align: center;
+    font-size: 30px;
+    transform: rotate(90deg);
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+
+  .rotate {
+    transform: rotate(270deg);
+    transition: transform 0.3s;
   }
 }
 
