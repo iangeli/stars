@@ -12,8 +12,8 @@
   export default {
     name: 'dragview',
     props: {
-      x: { type: Number, default: 0 },
-      y: { type: Number, default: 0 },
+      x: { type: Number, default: null },
+      y: { type: Number, default: null },
       parent: { type: Boolean, default: true }, // 是否只能在父级元素中拖动
     },
     data() {
@@ -41,6 +41,9 @@
       }
     },
     mounted() {
+      if (this.x === null) { this.left = this.$el.offsetLeft }
+      if (this.y === null) { this.top = this.$el.offsetTop }
+
       if (this.parent) this.calculationParent()
 
       // 是否支持passive

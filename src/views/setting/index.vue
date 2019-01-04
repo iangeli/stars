@@ -1,55 +1,58 @@
 <template>
   <div class="content">
-    <el-form
-      label-position="left"
-      size="mini"
-      :model="settings"
-      label-width="180px">
-      <el-form-item label="Database Location: ">
-        <a :href="`https://gist.github.com/${login}`" target="_blank">gist.github.com/{{login}}</a>
-      </el-form-item>
-      <el-form-item label="Database Name: ">
-        {{fileName}}
-      </el-form-item>
-      <el-form-item label="Show tags in Navigate: ">
-        <el-switch v-model="settings.showTagsInNavigate"></el-switch>
-      </el-form-item>
-      <el-form-item label="Show tags in ReadMe: ">
-        <el-switch v-model="settings.showTagsInReadme"></el-switch>
-      </el-form-item>
-      <el-form-item label="Delete tag directly: ">
-        <el-switch v-model="settings.deleteTagDirect"></el-switch>
-      </el-form-item>
-    </el-form>
+    <el-tabs
+      v-model="current">
+      <el-tab-pane label="General" name="setting"></el-tab-pane>
+      <el-tab-pane label="Sponsor" name="sponsor"></el-tab-pane>
+      <el-tab-pane label="About" name="about"></el-tab-pane>
+    </el-tabs>
+    <div class="wrapper">
+      <transition name="fade">
+        <keep-alive>
+          <component class="component" :is="current"></component>
+        </keep-alive>
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
-  import appConfig from '@/js/config'
+  import about from './about'
+  import setting from './setting'
+  import sponsor from './sponsor'
 
   export default {
-    name: 'settings',
-    props: {
-      login: String
-    },
+    name: 'index',
+    components: { setting, about, sponsor },
     data() {
       return {
-        settings: this.$store.state.settings.data
+        current: 'setting'
       }
-    },
-    computed: {
-      fileName() {
-        return appConfig.filename
-      }
-    },
-    updated() {
-      this.$store.dispatch('settings/updateSettings', this.settings)
-    },
+    }
   }
 </script>
 
 <style scoped  lang="sass">
-  .el-form
-    padding: 0 30px
+  .content
+    .wrapper
+      position: relative
+      width: 100%
+      height: 300px
+      overflow: hidden
 
+      display: flex
+      justify-content: center
+      align-items: flex-start
+      .component
+        position: absolute
+  .fade-enter
+    transform: translateX(100%)
+    opacity: 0
+  .fade-enter-to, fade-leave
+    transform: translateX(0)
+  .fade-enter-active, .fade-leave-active
+    transition: all 1s
+  .fade-leave-to
+    transform: translateX(-50%)
+    opacity: 0
 </style>

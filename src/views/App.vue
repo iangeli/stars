@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <sidebar
-      class="sidebar"
+      :class="['sidebar', {'hide': hideSidebar}]"
       :defaultTags="defaultTags"
       :languageTags="languageTags"
     ></sidebar>
@@ -30,7 +30,8 @@ export default {
     return {
       show: true,
       languageTags: [],
-      rotate: false
+      rotate: false,
+      hideSidebar: false
     }
   },
   computed: {
@@ -47,8 +48,8 @@ export default {
   },
   methods: {
     rotateClick() {
-      console.log('---------')
       this.rotate = !this.rotate
+      this.hideSidebar = this.rotate
     }
   }
 }
@@ -56,6 +57,7 @@ export default {
 
 <style scoped lang="scss">
 #app {
+  position: relative;
   height: 100%;
   width: 100%;
 
@@ -65,6 +67,11 @@ export default {
   .sidebar {
     flex: 0 7 300px;
     height: 100%;
+    transition: flex 0.3s;
+    &.hide {
+      flex: 0 0 0;
+      transition: flex 0.3s;
+    }
   }
   .repobar{
     flex: 0 9 354px;
@@ -73,6 +80,9 @@ export default {
     flex: 1 30 785px;
   }
   .bubble {
+    position: fixed;
+    right: 20px;
+    top: 20px;
     width: 40px;
     height: 40px;
     line-height: 40px;
@@ -84,11 +94,10 @@ export default {
     transform: rotate(90deg);
     border-radius: 50%;
     transition: transform 0.3s;
-  }
-
-  .rotate {
-    transform: rotate(270deg);
-    transition: transform 0.3s;
+    &.rotate {
+      transform: rotate(270deg);
+      transition: transform 0.3s;
+    }
   }
 }
 

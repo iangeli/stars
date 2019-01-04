@@ -15,6 +15,8 @@ import {
   Switch,
   Form,
   FormItem,
+  Tabs,
+  TabPane
 } from 'element-ui'
 
 Vue.use(Tag)
@@ -31,5 +33,7 @@ Vue.use(Dialog)
 Vue.use(Switch)
 Vue.use(Form)
 Vue.use(FormItem)
+Vue.use(Tabs)
+Vue.use(TabPane)
 
 Vue.prototype.$notify = Notification
