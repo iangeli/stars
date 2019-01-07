@@ -22,9 +22,9 @@ axios.interceptors.response.use(({ data }) => {
 
 const { filename, description, starredReposPerPage } = appConfig
 
-// https://github.com/imsun/gh-oauth-server 获取 access token 服务 解决跨域问题
-export const getGitstarsAccessToken = params => axios.post('https://gh-oauth.imsun.net', params)
-// export const getGitstarsAccessToken = params => axios.post('https://github.com/login/oauth/access_token', params)
+// 服务器源码位于 https://github.com/iangeli/stars-server
+// 获取 access token 服务 解决跨域问题
+export const getGitstarsAccessToken = params => axios.post('https://github.iangeli.com', params)
 
 // https://developer.github.com/v3/users/#get-the-authenticated-user
 export const getUserInfo = () => axios.get(`/user`)
