@@ -105,7 +105,7 @@ export default {
   overflow: hidden;
 
   .titleWrapper {
-    flex: 1 1 auto;
+    flex: 0 1 auto;
     display: flex;
     flex-direction: column;
 
@@ -126,10 +126,11 @@ export default {
     }
   }
   .star {
-    flex: 0 0 auto;
+    flex: 1 0 auto;
     margin-left: 10px;
     color: #5a5a5a;
     font-size: 12px;
+    text-align: right;
   }
 }
 
