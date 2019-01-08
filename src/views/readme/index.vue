@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <section class="repo-readme">
-      <repo-readme-header v-show="isSelectedRepo" :visible="isSelectedRepo" :activeRepo="activeRepo"></repo-readme-header>
+      <repo-readme-header class="header" v-show="isSelectedRepo" :visible="isSelectedRepo" :activeRepo="activeRepo"></repo-readme-header>
       <article v-show="readme && !isReadmeError" v-html="readme" class="markdown-body"></article>
     </section>
     <div v-if="isReadmeError" class="readme-error vc-p">
@@ -44,9 +44,15 @@ export default {
     overflow-x: hidden;
     .repo-readme {
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      .header {
+        flex: 0 0 auto;
+      }
       .markdown-body {
+        flex: 1 1 auto;
         overflow: auto;
-        height: calc(100% - 85px);
         padding: 20px;
         font-size: 14px;
         color: #5a5a5a;

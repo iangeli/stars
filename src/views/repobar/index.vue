@@ -96,6 +96,9 @@ export default {
       padding: 0;
       margin: 0;
       list-style: none;
+      .active {
+        background: #f3f3f3;
+      }
     }
   }
 
