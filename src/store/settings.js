@@ -5,6 +5,7 @@ export default {
   state: {
     data: JSON.parse(window.localStorage.getItem(appConfig.localStorageKeys.settings)) || {
       showTagsInReadme: true,
+      showLanguageBarInReadme: true,
       showTagsInNavigate: true,
       deleteTagDirect: false
     }
@@ -15,8 +16,7 @@ export default {
     },
   },
   actions: {
-    updateSettings({ commit }, params) {
-      commit('UPDATE_SETTINGS', params)
+    updateSettings({ commit }) {
       window.localStorage.setItem(appConfig.localStorageKeys.settings, JSON.stringify(this.state.settings.data))
     },
 

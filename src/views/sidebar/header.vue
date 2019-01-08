@@ -30,6 +30,13 @@
         showSettingDialog: false,
       }
     },
+    watch: {
+      showSettingDialog(newVal) {
+        if (!newVal) {
+          this.$store.dispatch('settings/updateSettings')
+        }
+      }
+    },
     methods: {
       settingsClick() {
         this.showSettingDialog = true
@@ -47,7 +54,6 @@
     width: 100%
     height: 100%
 
-
   .user-info
     position: relative
     width: 100%
@@ -58,7 +64,9 @@
     .user
       flex: 1 1 auto
     .set
+      flex: 1 0 auto
       margin-right: 16px
+      text-align: right
       color: white
   .user-avatar
     display: inline-block

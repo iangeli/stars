@@ -4,7 +4,7 @@
       label-position="left"
       size="mini"
       :model="settings"
-      label-width="180px">
+      label-width="230px">
       <el-form-item label="Database Location: ">
         <a :href="`https://gist.github.com/${login}`" target="_blank">gist.github.com/{{login}}</a>
       </el-form-item>
@@ -16,6 +16,9 @@
       </el-form-item>
       <el-form-item label="Show tags in ReadMe: ">
         <el-switch v-model="settings.showTagsInReadme"></el-switch>
+      </el-form-item>
+      <el-form-item label="Show language Bar in ReadMe: ">
+        <el-switch v-model="settings.showLanguageBarInReadme"></el-switch>
       </el-form-item>
       <el-form-item label="Delete tag directly: ">
         <el-switch v-model="settings.deleteTagDirect"></el-switch>

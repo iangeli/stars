@@ -33,12 +33,16 @@
         <i slot="prefix" class="fa fa-fw fa-lg fa-tag el-input__icon"></i>
       </el-autocomplete>
     </div>
-
+    <div v-if="showLanguageBarInReadme" class="languageWrapper">
+      <div class="language" :style="{'background': `linear-gradient(to right, white, ${languageColor})`}"></div>
+      <div class="name" :style="{'color': languageColor}">{{activeRepo.language}}</div>
+    </div>
   </div>
 </template>
 
 <script>
   import RepoTag from '../../components/repotag'
+  import { colorForLanguage } from '@/help'
   import { mapState } from 'vuex'
 
   export default {
@@ -55,13 +59,17 @@
     },
     computed: {
       ...mapState({
-        showTagsInReadme: state => state.settings.data.showTagsInReadme
+        showTagsInReadme: state => state.settings.data.showTagsInReadme,
+        showLanguageBarInReadme: state => state.settings.data.showLanguageBarInReadme,
       }),
       currentRepoUntaggedTags() {
         return this.$store.state.tag.tags
           .filter(tag => !this.activeRepo._customTags.find(({ id }) => id === tag.id))
           .map(({ name }) => name)
       },
+      languageColor() {
+        return colorForLanguage(this.activeRepo.language)
+      }
     },
     methods: {
       handleFetchTagSuggestions(inputStr, cb) {
@@ -132,6 +140,21 @@
         .fa-tag {
           font-size: 10px;
         }
+      }
+    }
+    .languageWrapper {
+      position: relative;
+      width: calc(100% + 30px);
+      align-self: center;
+      .language {
+        height: 8px;
+        border-radius: 3px;
+      }
+      .name {
+        color: #586069;
+        position: absolute;
+        right: 15px;
+        text-shadow: 0 0 1em #c4c4c4;
       }
     }
   }

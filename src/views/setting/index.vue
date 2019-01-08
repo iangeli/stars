@@ -28,7 +28,7 @@
       return {
         current: 'setting'
       }
-    }
+    },
   }
 </script>
 

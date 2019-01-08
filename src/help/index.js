@@ -118,6 +118,32 @@ export const validateTagName = async (tags, name) => {
   return name
 }
 
+export const colorForLanguage = (name) => {
+  const defautColor = {
+    'C': 'rgb(85,85,85)',
+    'C++': 'rgb(241,86,124)',
+    'CoffeeScript': 'rgb(33,71,121)',
+    'CSS': 'rgb(84,63,127)',
+    'Erlang': 'rgb(181,66,155)',
+    'GCC Machine Description': 'rgb(204,204,204)',
+    'Go': 'rgb(50,94,175)',
+    'HTML': 'rgb(227,84,9)',
+    'Java': 'rgb(176,116,0)',
+    'JavaScript': 'rgb(243,224,65)',
+    'Kotlin': 'rgb(240,145,20)',
+    'Objective-C': 'rgb(56,142,255)',
+    'Objective-C++': 'rgb(95,105,255)',
+    'PHP': 'rgb(77,93,152)',
+    'Python': 'rgb(50,113,168)',
+    'Ruby': 'rgb(111,28,17)',
+    'Scala': 'rgb(192,57,60)',
+    'Shell': 'rgb(144,221,57)',
+    'Swift': 'rgb(255,174,44)',
+    'TypeScript': 'rgb(44,115,139)',
+    'XSLT': 'rgb(232,145,239)' }
+  return defautColor[name] || '#586069'
+}
+
 export const notifySuccess = (notify) => Notification.success(Object.assign({}, notify, appConfig.notify))
 export const notifyInfo = (notify) => Notification.info(Object.assign({}, notify, appConfig.notify))
 export const notifyWarn = (notify) => Notification.warning(Object.assign({}, notify, appConfig.notify))
