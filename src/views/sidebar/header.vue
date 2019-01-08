@@ -46,49 +46,34 @@
 </script>
 
 <style scoped  lang="sass">
-  .setting
-    z-index: 999
-    position: fixed
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
+  .header
+    .user-info
+      position: relative
+      width: 100%
+      height: 50px
 
-  .user-info
-    position: relative
-    width: 100%
-    height: 50px
-
-    display: flex
-    align-items: center
-    .user
-      flex: 1 1 auto
-    .set
-      flex: 1 0 auto
-      margin-right: 16px
-      text-align: right
+      display: flex
+      align-items: center
+      .user
+        flex: 1 1 auto
+      .set
+        flex: 1 0 auto
+        margin-right: 16px
+        text-align: right
+        color: white
+    .user-avatar
+      display: inline-block
+      height: 40px
+      margin: 5px 10px
+      border-radius: 5%
+    .user-name, .setting
+      display: inline-block
+      font-size: 20px
+      line-height: 50px
+      vertical-align: top
+      height: 50px
       color: white
-  .user-avatar
-    display: inline-block
-    height: 40px
-    margin: 5px 10px
-    border-radius: 5%
-
-  .user-name, .setting
-    display: inline-block
-    font-size: 20px
-    line-height: 50px
-    vertical-align: top
-    height: 50px
-    color: white
-
-  a
-    text-decoration: none
-
-  .setting
-    display: inline-block
-    height: 50px
-    position: absolute
-    right: 10px
+    a
+      text-decoration: none
 
 </style>

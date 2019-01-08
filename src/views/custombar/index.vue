@@ -21,9 +21,22 @@ export default {
   components: { Draggable, TagNavWrap, CustomTagLabel, CustomTagDeleteBtn },
   computed: {
     ...mapState(['isEditingTags']),
+    ...mapState({
+      sortTag: state => state.settings.data.sortTag
+    }),
     customTags: {
       get() {
-        return this.$store.state.tag.tags
+        const tags = this.$store.state.tag.tags
+        switch (this.sortTag) {
+          case 'Alphabet':
+            tags.sort((a, b) => { return a.name > b.name ? 1 : -1 })
+            break
+          case 'Count':
+            tags.sort((a, b) => { return b.repos.length - a.repos.length })
+            break
+          default: break
+        }
+        return tags
       },
       set(value) {
         this.$store.commit('tag/initTags', value)

@@ -4,7 +4,7 @@
       <i class="fa fa-search" aria-hidden="true"></i>
       <input
         :value="searchValue"
-        placeholder='Developer | Repository | Tag'
+        placeholder='Developer | Repository | Tag | Language'
         type="text"
         class="search-input"
         @input="handleInputSearchValue" />

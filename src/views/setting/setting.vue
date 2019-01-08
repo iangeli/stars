@@ -4,24 +4,21 @@
       label-position="left"
       size="mini"
       :model="settings"
-      label-width="230px">
+      label-width="180px">
       <el-form-item label="Database Location: ">
         <a :href="`https://gist.github.com/${login}`" target="_blank">gist.github.com/{{login}}</a>
       </el-form-item>
       <el-form-item label="Database Name: ">
         {{fileName}}
       </el-form-item>
-      <el-form-item label="Show tags in Navigate: ">
-        <el-switch v-model="settings.showTagsInNavigate"></el-switch>
-      </el-form-item>
-      <el-form-item label="Show tags in ReadMe: ">
-        <el-switch v-model="settings.showTagsInReadme"></el-switch>
-      </el-form-item>
-      <el-form-item label="Show language Bar in ReadMe: ">
-        <el-switch v-model="settings.showLanguageBarInReadme"></el-switch>
-      </el-form-item>
       <el-form-item label="Delete tag directly: ">
         <el-switch v-model="settings.deleteTagDirect"></el-switch>
+      </el-form-item>
+      <el-form-item label="Sort Tag: ">
+        <el-radio-group v-model="settings.sortTag">
+          <el-radio-button label="Alphabet"></el-radio-button>
+          <el-radio-button label="Count"></el-radio-button>
+        </el-radio-group>
       </el-form-item>
     </el-form>
   </div>

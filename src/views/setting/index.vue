@@ -3,6 +3,7 @@
     <el-tabs
       v-model="current">
       <el-tab-pane label="General" name="setting"></el-tab-pane>
+      <el-tab-pane label="UI" name="ui"></el-tab-pane>
       <el-tab-pane label="Sponsor" name="sponsor"></el-tab-pane>
       <el-tab-pane label="About" name="about"></el-tab-pane>
     </el-tabs>
@@ -20,10 +21,11 @@
   import about from './about'
   import setting from './setting'
   import sponsor from './sponsor'
+  import ui from './ui'
 
   export default {
     name: 'index',
-    components: { setting, about, sponsor },
+    components: { ui, setting, about, sponsor },
     data() {
       return {
         current: 'setting'
@@ -34,6 +36,7 @@
 
 <style scoped  lang="sass">
   .content
+    transform: translateY(-30px)
     .wrapper
       position: relative
       width: 100%

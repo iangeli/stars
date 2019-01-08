@@ -7,7 +7,8 @@ export default {
       showTagsInReadme: true,
       showLanguageBarInReadme: true,
       showTagsInNavigate: true,
-      deleteTagDirect: false
+      deleteTagDirect: false,
+      sortTag: 'Alphabet'
     }
   },
   mutations: {
