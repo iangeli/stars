@@ -29,7 +29,7 @@ export default {
         const tags = this.$store.state.tag.tags
         switch (this.sortTag) {
           case 'Alphabet':
-            tags.sort((a, b) => { return a.name > b.name ? 1 : -1 })
+            tags.sort((a, b) => { return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1 })
             break
           case 'Count':
             tags.sort((a, b) => { return b.repos.length - a.repos.length })
