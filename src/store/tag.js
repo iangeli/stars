@@ -5,7 +5,7 @@ export default {
   namespaced: true,
   state: {
     tags: [],
-    active: appConfig.defaultTags.all
+    active: JSON.parse(window.localStorage.getItem(appConfig.localStorageKeys.activeSelect)) || appConfig.defaultTags.all
   },
   mutations: {
     initTags(state, tags) {
@@ -13,6 +13,7 @@ export default {
     },
     switchActive(state, tag) {
       state.active = tag
+      window.localStorage.setItem(appConfig.localStorageKeys.activeSelect, JSON.stringify(tag))
     },
     changeTagName(state, { tagId, name }) {
       const tag = state.tags.find(tag => tag.id === tagId)
