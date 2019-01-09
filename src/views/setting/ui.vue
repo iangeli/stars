@@ -14,6 +14,19 @@
       <el-form-item label="Show language Bar in ReadMe: ">
         <el-switch v-model="settings.showLanguageBarInReadme"></el-switch>
       </el-form-item>
+      <el-form-item label="Sort Tag: ">
+        <el-radio-group v-model="settings.sortTag">
+          <el-radio-button label="Alphabet"></el-radio-button>
+          <el-radio-button label="Count"></el-radio-button>
+          <el-radio-button label="User Design"></el-radio-button>
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item label="Sort Language: ">
+        <el-radio-group v-model="settings.sortLanguage">
+          <el-radio-button label="Alphabet"></el-radio-button>
+          <el-radio-button label="Count"></el-radio-button>
+        </el-radio-group>
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -21,9 +34,6 @@
 <script>
   export default {
     name: 'ui',
-    props: {
-      login: String
-    },
     data() {
       return {
         settings: this.$store.state.settings.data
@@ -35,5 +45,4 @@
 <style scoped  lang="sass">
   .content
     padding: 0 30px
-
 </style>

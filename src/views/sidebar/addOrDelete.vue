@@ -57,6 +57,7 @@ export default {
       this.$store.commit('toggleIsEditingTags', false)
 
       let isChanged = false
+      if (customTagsClone === null) return
       for (const [index, { id, name }] of customTagsClone.entries()) {
         const tag = this.customTags[index]
         if (!tag || id !== tag.id || name !== tag.name) {

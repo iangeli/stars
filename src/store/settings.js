@@ -8,7 +8,8 @@ export default {
       showLanguageBarInReadme: true,
       showTagsInNavigate: true,
       deleteTagDirect: false,
-      sortTag: 'Alphabet'
+      sortTag: 'Alphabet',
+      sortLanguage: 'Count'
     }
   },
   mutations: {

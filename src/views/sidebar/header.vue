@@ -15,7 +15,6 @@
       <settings :login="user.login"></settings>
     </el-dialog>
   </div>
-
 </template>
 
 <script>
@@ -75,5 +74,4 @@
       color: white
     a
       text-decoration: none
-
 </style>

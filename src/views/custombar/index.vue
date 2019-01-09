@@ -34,6 +34,8 @@ export default {
           case 'Count':
             tags.sort((a, b) => { return b.repos.length - a.repos.length })
             break
+          case 'User Design':
+            break
           default: break
         }
         return tags

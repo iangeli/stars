@@ -36,7 +36,6 @@
 
 <style scoped  lang="sass">
   .content
-    transform: translateY(-30px)
     .wrapper
       position: relative
       width: 100%
@@ -54,7 +53,7 @@
   .fade-enter-to, fade-leave
     transform: translateX(0)
   .fade-enter-active, .fade-leave-active
-    transition: all 1s
+    transition: all 0.5s
   .fade-leave-to
     transform: translateX(-50%)
     opacity: 0

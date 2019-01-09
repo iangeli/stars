@@ -14,12 +14,6 @@
       <el-form-item label="Delete tag directly: ">
         <el-switch v-model="settings.deleteTagDirect"></el-switch>
       </el-form-item>
-      <el-form-item label="Sort Tag: ">
-        <el-radio-group v-model="settings.sortTag">
-          <el-radio-button label="Alphabet"></el-radio-button>
-          <el-radio-button label="Count"></el-radio-button>
-        </el-radio-group>
-      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -29,11 +23,9 @@
 
   export default {
     name: 'settings',
-    props: {
-      login: String
-    },
     data() {
       return {
+        login: window._gitstars.user.login,
         settings: this.$store.state.settings.data
       }
     },
