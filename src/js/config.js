@@ -23,8 +23,8 @@ export default {
   starredReposPerPage: 100, // Github 最大值
 
   defaultTags: {
-    all: { id: 0, icon: 'fa-bars', key: 'All' },
-    untagged: { id: -1, icon: 'fa-star-o', key: 'Untagged' },
+    all: { id: 0, icon: 'fa-bars', key: '' },
+    untagged: { id: -1, icon: 'fa-star-o', key: '' },
   },
   tagCategorys: {
     custom: { id: 0, name: '自定义', key: 'custom' },

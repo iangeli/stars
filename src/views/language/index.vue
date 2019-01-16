@@ -5,6 +5,7 @@
         <i :class="`${tag.icon || 'fa-tag'}`" class="fa fa-fw" aria-hidden="true"></i>
         <span class="nav-item__name slo">{{ tag.name || tag.key }}</span>
       </div>
+      <slot></slot>
     </tag-nav-wrap>
   </ul>
 </template>

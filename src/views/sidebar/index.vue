@@ -1,7 +1,17 @@
 <template>
   <div id="sidebar">
     <layout-header></layout-header>
-    <tags-nav :tags="defaultTags" class="default-tags"></tags-nav>
+    <div class="default-tags1">
+      <div v-for="tag in defaultTags"
+           :key="tag.id"
+           :class="['tagWrapper', { 'active': tag.id === activeTag.id }]"
+           @click="handleSwitchActiveTag(tag)">
+        <div class="tag">
+          <i :class="`${tag.icon || 'fa-tag'}`" class="fa fa-fw" aria-hidden="true"></i>
+          <span class="nav-item__name slo">{{ tag.repos.length }}</span>
+        </div>
+      </div>
+    </div>
     <div class="sidebar-main">
       <tag-nav-header :isCustomCategoryActive="isCustomCategoryActive" :tagNameFormVisible.sync="tagNameFormVisible"></tag-nav-header>
       <transition name="slide-down">
@@ -57,19 +67,25 @@ export default {
       tagCategorys,
       activeTagCategory: appConfig.tagCategorys.custom,
       tagNameFormVisible: false,
+      activeTag: { id: 0, icon: 'fa-bars', key: '' },
     }
   },
   computed: {
     ...mapState(['isEditingTags', 'isLoadedData']),
-    ...mapState('tag', { customTags: 'tags' }),
+    ...mapState('tag', { customTags: 'tags', activeTag: 'active' }),
     isCustomCategoryActive() {
       return this.activeTagCategory === this.tagCategorys.custom
+    },
+  },
+  methods: {
+    handleSwitchActiveTag(tag) {
+      this.$store.commit('tag/switchActive', tag)
     },
   },
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #sidebar {
   overflow: hidden;
   display: flex;
@@ -91,6 +107,24 @@ export default {
   flex-direction: column;
   flex: none;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.default-tags1 {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  .tagWrapper {
+    padding: 5px 20px;
+    flex: 1 1 auto;
+    &.active {
+      /*background: red;*/
+    }
+    .tag {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }
 
 .sidebar-main {
