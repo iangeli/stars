@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="user-info">
-      <a class="user" :href="`${user.html_url}?tab=repositories`" target="_blank" rel="noopener noreferrer">
+      <a class="user" :href="`${user.html_url}?tab=stars`" target="_blank" rel="noopener noreferrer">
         <img :src="user.avatar_url" class="user-avatar">
         <div class="user-name">{{ user.name }}</div>
       </a>

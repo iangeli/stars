@@ -1,7 +1,7 @@
 <template>
   <div id="sidebar">
     <layout-header></layout-header>
-    <div class="default-tags1">
+    <div class="default-tags">
       <div v-for="tag in defaultTags"
            :key="tag.id"
            :class="['tagWrapper', { 'active': tag.id === activeTag.id }]"
@@ -67,7 +67,6 @@ export default {
       tagCategorys,
       activeTagCategory: appConfig.tagCategorys.custom,
       tagNameFormVisible: false,
-      activeTag: { id: 0, icon: 'fa-bars', key: '' },
     }
   },
   computed: {
@@ -104,25 +103,21 @@ export default {
 
 .default-tags {
   display: flex;
-  flex-direction: column;
-  flex: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-.default-tags1 {
-
-  display: flex;
   flex-direction: row;
   justify-content: center;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 30px;
   .tagWrapper {
     padding: 5px 20px;
     flex: 1 1 auto;
     &.active {
-      /*background: red;*/
+      border-bottom-color: transparent;
+      background-color: rgba(255, 255, 255, 0.1);
     }
     .tag {
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
   }
 }
