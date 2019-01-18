@@ -42,6 +42,7 @@ export default {
       const { searchValue, sortKey } = this
       return this.$store.getters['repo/reposOfTag']
         .filter(repo => {
+          if (searchValue.length === 0) { return true }
           const owner = repo.owner.login.toLowerCase().includes(searchValue)
           if (owner) { return true }
           const repoName = repo.name && repo.name.toLowerCase().includes(searchValue)
