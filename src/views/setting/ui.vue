@@ -16,15 +16,15 @@
       </el-form-item>
       <el-form-item label="Sort Tag: ">
         <el-radio-group v-model="settings.sortTag">
+          <el-radio-button label="User Design"></el-radio-button>
           <el-radio-button label="Alphabet"></el-radio-button>
           <el-radio-button label="Count"></el-radio-button>
-          <el-radio-button label="User Design"></el-radio-button>
         </el-radio-group>
       </el-form-item>
       <el-form-item label="Sort Language: ">
         <el-radio-group v-model="settings.sortLanguage">
-          <el-radio-button label="Alphabet"></el-radio-button>
           <el-radio-button label="Count"></el-radio-button>
+          <el-radio-button label="Alphabet"></el-radio-button>
         </el-radio-group>
       </el-form-item>
     </el-form>

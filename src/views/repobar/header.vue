@@ -1,7 +1,20 @@
 <template>
   <header id="subsidebar-header">
     <label class="search-label">
-      <i class="fa fa-search" aria-hidden="true"></i>
+      <el-dropdown
+        @command="handleCommand"
+        class="searchDropdown"
+        placement="top"
+        trigger="click">
+        <span class="searchTag">
+          <i :class="['fa',searchType]" aria-hidden="true"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="fa-search">All</el-dropdown-item>
+          <el-dropdown-item command="fa-tag">Tag</el-dropdown-item>
+          <el-dropdown-item command="fa-globe">Language</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
       <input
         :value="searchValue"
         placeholder='Developer | Repository | Tag | Language'
@@ -32,6 +45,7 @@ export default {
   },
   data() {
     return {
+      searchType: 'fa-search',
       current: 'SORT',
       repoSorts: appConfig.repoSorts,
     }
@@ -47,6 +61,9 @@ export default {
       this.current = sort.name
       this.$emit('onSwitchRepoSort', sort.sortKey)
     },
+    handleCommand(command) {
+      this.searchType = command
+    }
   },
 }
 </script>
@@ -68,32 +85,50 @@ export default {
   align-items: center;
   padding-left: 10px;
   padding-right: 3px;
+  .searchDropdown {
+    height: 30px;
+    .searchTag {
+      position: absolute;
+      top: 15px;
+      left: -10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .fa {
+        position: absolute;
+        left: 22px;
+        color: #d9d9d9;
+      }
+    }
+  }
+
+  .search-input {
+    width: 100%;
+    height: 30px;
+    padding: 0 12px 0 33px;
+    border: 1px solid #d9d9d9;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #5a5a5a;
+    outline: none;
+    background-color: #fcfcfc;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    &::placeholder{
+      color: rgba(0, 0, 0, 0.25);
+    }
+    &::-webkit-input-placeholder{
+      color: rgba(0, 0, 0, 0.25);
+    }
+    &::-moz-placeholder{
+      color: rgba(0, 0, 0, 0.25);
+    }
+    &::-ms-input-placeholder{
+      color: rgba(0, 0, 0, 0.25);
+    }
+  }
 }
 
-.search-input {
-  width: 100%;
-  height: 30px;
-  padding: 0 12px 0 33px;
-  border: 1px solid #d9d9d9;
-  border-radius: 15px;
-  font-size: 12px;
-  color: #5a5a5a;
-  outline: none;
-  background-color: #fcfcfc;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  &::placeholder{
-    color: rgba(0, 0, 0, 0.25);
-  }
-  &::-webkit-input-placeholder{
-    color: rgba(0, 0, 0, 0.25);
-  }
-  &::-moz-placeholder{
-    color: rgba(0, 0, 0, 0.25);
-  }
-  &::-ms-input-placeholder{
-    color: rgba(0, 0, 0, 0.25);
-  }
-}
+
 
 .fa-search {
   position: absolute;
