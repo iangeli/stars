@@ -41,7 +41,7 @@ export default {
     },
     handleDeleteTag() {
       if (this.deleteTagDirect) {
-        this.$store.dispatch('tag/deleteTag', this.tag.id)
+        this.$store.dispatch('repo/deleteRepoTag', { repoId: this.repo.id, tagId: this.tag.id })
       } else {
         document.body.click()
         this.active = true
