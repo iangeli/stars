@@ -3,11 +3,11 @@
     <section class="repo-readme">
       <repo-readme-header class="header" v-show="isSelectedRepo" :visible="isSelectedRepo" :activeRepo="activeRepo"></repo-readme-header>
       <article v-show="readme && !isReadmeError" v-html="readme" class="markdown-body"></article>
+      <div v-if="isReadmeError" class="markdown-body readme-error vc-p">
+        <i class="fa fa-exclamation-circle fa-3x" aria-hidden="true"></i>
+        <p class="readme-error-text">{{ readme.status }} {{ readme.statusText }}</p>
+      </div>
     </section>
-    <div v-if="isReadmeError" class="readme-error vc-p">
-      <i class="fa fa-exclamation-circle fa-3x" aria-hidden="true"></i>
-      <p class="readme-error-text">{{ readme.status }} {{ readme.statusText }}</p>
-    </div>
     <section v-show="!readme" class="waiting vc-p">
       <h4 class="readme">README.md</h4>
       <p class="loader">
@@ -63,24 +63,20 @@ export default {
           color: #0366d6;
           text-decoration: none;
         }
-      }
-    }
-    .readme-error {
-      position: absolute;
-      width: 100%;
-      height: 100%;
+        &.readme-error {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      font-size: 36px;
-      text-align: center;
-      font-weight: 700;
-      color: #d9d9d9;
-      .readme-error-text {
-        margin-top: 0.5em;
+          font-size: 36px;
+          text-align: center;
+          font-weight: 700;
+          color: #d9d9d9;
+          .readme-error-text {
+            margin-top: 0.5em;
+          }
+        }
       }
     }
     .waiting {
