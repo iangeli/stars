@@ -34,6 +34,27 @@ export default {
       hideSidebar: false
     }
   },
+  created() {
+    window.addEventListener('keyup', event => {
+      if (event.srcElement.localName === 'input') { return }
+      switch (event.key) {
+        case 'S':
+        case 's':
+          window.dispatchEvent(new Event('searchTag'))
+          break
+        case 'I':
+        case 'i':
+          window.dispatchEvent(new Event('inputTag'))
+          break
+        case 'N':
+        case 'n':
+          window.dispatchEvent(new Event('nextRepo'))
+          break
+        default:
+          break
+      }
+    })
+  },
   computed: {
     defaultTags() {
       return [

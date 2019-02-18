@@ -4,6 +4,7 @@
       v-model="current">
       <el-tab-pane label="General" name="setting"></el-tab-pane>
       <el-tab-pane label="UI" name="ui"></el-tab-pane>
+      <el-tab-pane label="Shortcuts" name="shortcuts"></el-tab-pane>
       <el-tab-pane label="Sponsor" name="sponsor"></el-tab-pane>
       <el-tab-pane label="About" name="about"></el-tab-pane>
     </el-tabs>
@@ -22,10 +23,11 @@
   import setting from './setting'
   import sponsor from './sponsor'
   import ui from './ui'
+  import shortcuts from './shortcuts'
 
   export default {
     name: 'index',
-    components: { ui, setting, about, sponsor },
+    components: { ui, setting, about, sponsor, shortcuts },
     data() {
       return {
         current: 'setting'

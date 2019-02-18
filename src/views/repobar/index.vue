@@ -29,6 +29,16 @@ import config from '@/js/config'
 export default {
   name: 'sub-sidebar',
   components: { SubSidebarHeader, Repo },
+  created() {
+    window.addEventListener('nextRepo', event => {
+      const idx = this.repos.findIndex(repo => repo.id === this.activeRepo.id)
+      if (idx >= 0) {
+        this.$store.dispatch('repo/switchActive', this.repos[(idx + 1) % this.repos.length])
+      } else if (this.repos.length > 0) {
+        this.$store.dispatch('repo/switchActive', this.repos[0])
+      }
+    })
+  },
   data() {
     return {
       searchValue: '',
@@ -80,7 +90,8 @@ export default {
     .loader, .no-match {
       position: absolute;
       width: 100%;
-      height: 100%;
+      /*height: 100%;*/
+      flex: 1 1 auto;
 
       display: flex;
       flex-direction: column;

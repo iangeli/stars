@@ -16,11 +16,13 @@
         </el-dropdown-menu>
       </el-dropdown>
       <input
+        ref="searchInput"
         :value="searchValue"
         placeholder='Developer | Repository | Tag | Language'
         type="text"
         class="search-input"
-        @input="handleInputSearchValue" />
+        @input="handleInputSearchValue"
+        @keyup.esc="cancelInput"/>
     </label>
     <el-dropdown class="sort-drapdown" @command="handleSortRepos">
       <div class="sort-drapdown-link">{{current}}&nbsp;<i class="el-icon-arrow-down"></i></div>
@@ -43,6 +45,11 @@ export default {
   props: {
     searchValue: { type: String, default: '' },
   },
+  created() {
+    window.addEventListener('searchTag', event => {
+      this.$refs.searchInput.focus()
+    })
+  },
   data() {
     return {
       searchType: 'fa-search',
@@ -63,6 +70,9 @@ export default {
     },
     handleCommand(command) {
       this.searchType = command
+    },
+    cancelInput(event) {
+      this.$refs.searchInput.blur()
     }
   },
 }

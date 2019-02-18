@@ -19,7 +19,7 @@
 
 <script>
   export default {
-    name: 'introduction',
+    name: 'about',
   }
 </script>
 

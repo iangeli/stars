@@ -20,6 +20,7 @@
       </template>
 
       <el-autocomplete
+        ref="inputTag"
         v-model="tagName"
         :fetch-suggestions="handleFetchTagSuggestions"
         placeholder='New Tag'
@@ -29,7 +30,7 @@
         @select="confirmInputTag"
         @blur="cancelInputTag"
         @keyup.enter.native="confirmInputTag"
-        @keyup.esc.native="cleanInputTag">
+        @keyup.esc.native="cancelInputTag">
         <i slot="prefix" class="fa fa-fw fa-lg fa-tag el-input__icon"></i>
       </el-autocomplete>
     </div>
@@ -57,6 +58,11 @@
         tagName: '',
       }
     },
+    created() {
+      window.addEventListener('inputTag', event => {
+        this.$refs.inputTag.focus()
+      })
+    },
     computed: {
       ...mapState({
         showTagsInReadme: state => state.settings.data.showTagsInReadme,
@@ -82,11 +88,9 @@
         this.$store.dispatch('repo/addRepoTag', this.tagName.trim())
         this.tagName = ''
       },
-      cleanInputTag(event) {
-        this.tagName = ''
-      },
       cancelInputTag(event) {
         event.target.blur()
+        this.$refs.inputTag.close()
         this.tagName = ''
       },
     },

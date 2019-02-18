@@ -16,7 +16,9 @@ import {
   Form,
   FormItem,
   Tabs,
-  TabPane
+  TabPane,
+  Table,
+  TableColumn
 } from 'element-ui'
 
 Vue.use(Tag)
@@ -35,5 +37,7 @@ Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Tabs)
 Vue.use(TabPane)
+Vue.use(Table)
+Vue.use(TableColumn)
 
 Vue.prototype.$notify = Notification
