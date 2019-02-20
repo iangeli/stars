@@ -50,6 +50,10 @@ export default {
         case 'n':
           window.dispatchEvent(new Event('nextRepo'))
           break
+        case 'B':
+        case 'b':
+          window.dispatchEvent(new Event('browseProject'))
+          break
         default:
           break
       }

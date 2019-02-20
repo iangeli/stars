@@ -25,7 +25,8 @@
         shortcuts: [
           { key: 'S', descript: 'Focus search repo input' },
           { key: 'I', descript: 'Focus add tags input' },
-          { key: 'N', descript: 'Next repo' }
+          { key: 'N', descript: 'Next repo' },
+          { key: 'B', descript: 'Browse project in new page' }
         ]
       }
     }

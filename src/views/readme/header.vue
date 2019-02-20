@@ -62,6 +62,9 @@
       window.addEventListener('inputTag', event => {
         this.$refs.inputTag.focus()
       })
+      window.addEventListener('browseProject', event => {
+        window.open(this.activeRepo.html_url || 'https://github.com/iangeli/stars')
+      })
     },
     computed: {
       ...mapState({
