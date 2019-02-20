@@ -7,12 +7,12 @@
         <i class="fa fa-exclamation-circle fa-3x" aria-hidden="true"></i>
         <p class="readme-error-text">{{ readme.status }} {{ readme.statusText }}</p>
       </div>
-    </section>
-    <section v-show="!readme" class="waiting vc-p">
-      <h4 class="readme">README.md</h4>
-      <p class="loader">
-        <i v-show="isSelectedRepo && !readme" class="fa fa-cog fa-spin fa-2x fa-fw"></i>
-      </p>
+      <div v-show="!readme" class="waiting vc-p">
+        <h4 class="readme">README.md</h4>
+        <p class="loader">
+          <i v-show="isSelectedRepo && !readme" class="fa fa-cog fa-spin fa-2x fa-fw"></i>
+        </p>
+      </div>
     </section>
   </div>
 </template>
@@ -78,30 +78,29 @@ export default {
           }
         }
       }
-    }
-    .waiting {
-      position: absolute;
-      width: 100%;
-      height: 100%;
+      .waiting {
+        flex: 1 1 auto;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-      font-size: 14px;
-      text-align: center;
-      color: #d9d9d9;
-      user-select: none;
-      .readme {
-        font-size: 28px;
-        margin: 0.5em;
-        font-weight: 700;
-      }
-      .loader {
-        height: 28px;
+        font-size: 14px;
+        text-align: center;
+        color: #d9d9d9;
+        user-select: none;
+        .readme {
+          font-size: 28px;
+          margin: 0.5em;
+          font-weight: 700;
+        }
+        .loader {
+          height: 28px;
+        }
       }
     }
+
   }
 
 </style>

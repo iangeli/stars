@@ -36,7 +36,7 @@
     </div>
     <div v-if="showLanguageBarInReadme" class="languageWrapper">
       <div class="language" :style="{'background': `linear-gradient(to right, white, ${languageColor})`}"></div>
-      <div class="name" :style="{'color': languageColor}">{{activeRepo.language}}</div>
+      <div class="updatedDate" >Latest: {{latestUpdateTime}}</div>
     </div>
   </div>
 </template>
@@ -75,6 +75,10 @@
       },
       languageColor() {
         return colorForLanguage(this.activeRepo.language)
+      },
+      latestUpdateTime() {
+        const dt = new Date(this.activeRepo.pushed_at)
+        return `${dt.getFullYear()} / ${dt.getMonth() + 1} / ${dt.getDate()}`
       }
     },
     methods: {
@@ -150,12 +154,13 @@
       position: relative;
       width: calc(100% + 30px);
       align-self: center;
+      font-size: 12px;
       .language {
-        height: 8px;
+        height: 5px;
         border-radius: 3px;
       }
-      .name {
-        color: #586069;
+      .updatedDate {
+        color: #828282;
         position: absolute;
         right: 15px;
         text-shadow: 0 0 1em #c4c4c4;
