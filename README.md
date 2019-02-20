@@ -40,5 +40,8 @@ This is necessary, gitstars not only did, and also done a perfect exception / er
 Synchronization of management data stored in localStorage can cause a problem: **Multi-client data is not synchronized**  
   
 So for the data to be correct, must obtain the data remotely from each visit to gitstars and then compare it with the local data. Lastly, change the time value, updating the local data to the remote data only if the remote data time value is greater than the local time value.    
+## Next Generation  
+- Backup gist  
+- Async add/delete tag  
 ## LICENSE  
 MIT
