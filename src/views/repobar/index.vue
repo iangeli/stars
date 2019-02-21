@@ -64,7 +64,25 @@ export default {
           const tag = repo._customTags && repo._customTags.find(tag => tag.name.toLowerCase().includes(searchValue)) !== undefined
           if (tag) { return true }
           return false
-        }).sort((a, b) => b[sortKey] - a[sortKey])
+        }).sort((a, b) => {
+          switch (sortKey) {
+            case 'stargazers_count':
+              return b[sortKey] - a[sortKey]
+            case 'pushed_at': {
+              const getValue = (obj) => {
+                let value = obj['_pushed_at']
+                if (!value) {
+                  value = (new Date(obj['pushed_at'])).getTime()
+                  obj['_pushed_at'] = value
+                }
+                return value
+              }
+              return getValue(b) - getValue(a)
+            }
+            default:
+              return 0
+          }
+        })
     },
   },
   methods: {

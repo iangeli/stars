@@ -18,7 +18,6 @@
       <template v-if="showTagsInReadme && activeRepo._customTags">
         <repo-tag v-for="tag of activeRepo._customTags" :key="tag.id" :repo="activeRepo" :tag="tag" />
       </template>
-
       <el-autocomplete
         ref="inputTag"
         v-model="tagName"
@@ -28,7 +27,6 @@
         size="mini"
         class="repo-tag-input"
         @select="confirmInputTag"
-        @blur="cancelInputTag"
         @keyup.enter.native="confirmInputTag"
         @keyup.esc.native="cancelInputTag">
         <i slot="prefix" class="fa fa-fw fa-lg fa-tag el-input__icon"></i>

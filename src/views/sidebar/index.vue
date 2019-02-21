@@ -3,7 +3,6 @@
     <layout-header></layout-header>
     <div class="default-tags">
       <div v-for="tag in defaultTags"
-           v-if="tag.repos.length !== 0"
            :key="tag.id"
            :class="['tagWrapper', { 'active': tag.id === activeTag.id }]"
            @click="handleSwitchActiveTag(tag)">
@@ -109,6 +108,7 @@ export default {
 
   height: 30px;
   .tagWrapper {
+    width: 49%;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     border-left: 1px solid rgba(255, 255, 255, 0.1);

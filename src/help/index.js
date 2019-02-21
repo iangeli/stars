@@ -12,7 +12,7 @@ export const loadReposAndLanguageTags = async (page = 1) => {
     reposByPage = await getStarredRepos(page++)
     reposByPage.forEach((repo, index) => {
       repo._customTags = []
-      repo[appConfig.repoSorts.time.sortKey] = sortNum--
+      repo['sortTime'] = sortNum--
     })
     repos.push(...reposByPage)
   } while (reposByPage.length === appConfig.starredReposPerPage)

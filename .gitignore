@@ -8,6 +8,7 @@ assets/
 index.html
 
 # Editor directories and files
+temp
 .idea
 .vscode
 *.suo

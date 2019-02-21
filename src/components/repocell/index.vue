@@ -87,11 +87,10 @@ export default {
     flex: 0 1 auto;
     display: flex;
     flex-direction: column;
-
+    align-items: flex-start;
     .repo {
       font-weight: 600;
     }
-
     .user{
       margin-top: 3px;
       font-weight: 400;
@@ -100,7 +99,6 @@ export default {
       .fa-user {
         margin-right: 7px;
         margin-left: 3px;
-
       }
     }
   }

@@ -31,7 +31,8 @@ export default {
     language: { id: 1, name: '语言', key: 'language' },
   },
   repoSorts: {
-    time: { id: 0, sortKey: '_sortTime', name: 'Time', icon: 'fa-clock-o' },
+    time: { id: 0, sortKey: 'sortTime', name: 'Time', icon: 'fa-clock-o' },
     star: { id: 1, sortKey: 'stargazers_count', name: 'star', icon: 'fa-star' },
+    update: { id: 0, sortKey: 'pushed_at', name: 'Update', icon: 'fa-refresh' },
   },
 }

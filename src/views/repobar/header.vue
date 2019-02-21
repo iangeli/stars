@@ -24,7 +24,9 @@
         @input="handleInputSearchValue"
         @keyup.esc="cancelInput"/>
     </label>
-    <el-dropdown class="sort-drapdown" @command="handleSortRepos">
+    <el-dropdown
+      class="sort-drapdown"
+      @command="handleSortRepos">
       <div class="sort-drapdown-link">{{current}}&nbsp;<i class="el-icon-arrow-down"></i></div>
       <el-dropdown-menu slot="dropdown" id="subsidebar-header__dropdown-menu">
         <el-dropdown-item v-for="sort in repoSorts" :key="sort.id" :command="sort">
@@ -171,7 +173,7 @@ export default {
 .el-dropdown-menu__item {
   display: flex;
   align-items: center;
-  width: 50px;
+  width: 70px;
   padding: 0 10px;
   font-size: 12px;
   line-height: 2;
