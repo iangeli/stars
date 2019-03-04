@@ -26,19 +26,7 @@ export default {
     }),
     customTags: {
       get() {
-        const tags = this.$store.state.tag.tags
-        switch (this.sortTag) {
-          case 'Alphabet':
-            tags.sort((a, b) => { return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1 })
-            break
-          case 'Count':
-            tags.sort((a, b) => { return b.repos.length - a.repos.length })
-            break
-          case 'User Design':
-            break
-          default: break
-        }
-        return tags
+        return this.$store.state.tag.tags
       },
       set(value) {
         this.$store.commit('tag/initTags', value)

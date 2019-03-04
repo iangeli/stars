@@ -15,11 +15,8 @@
         <el-switch v-model="settings.showLanguageBarInReadme"></el-switch>
       </el-form-item>
       <el-form-item label="Sort Tag: ">
-        <el-radio-group v-model="settings.sortTag">
-          <el-radio-button label="User Design"></el-radio-button>
-          <el-radio-button label="Alphabet"></el-radio-button>
-          <el-radio-button label="Count"></el-radio-button>
-        </el-radio-group>
+        <el-button @click="sortTag('Alphabet')">Alphabet</el-button>
+        <el-button @click="sortTag('Count')">Count</el-button>
       </el-form-item>
       <el-form-item label="Sort Language: ">
         <el-radio-group v-model="settings.sortLanguage">
@@ -39,6 +36,11 @@
         settings: this.$store.state.settings.data
       }
     },
+    methods: {
+      sortTag(method) {
+        this.$store.dispatch('tag/sortTag', method)
+      }
+    }
   }
 </script>
 

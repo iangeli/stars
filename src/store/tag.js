@@ -83,6 +83,20 @@ export default {
           throw new Error(message)
         })
     },
+    sortTag({ state, commit }, method) {
+      const newtags = state.tags
+      console.log('before', newtags, method)
+      switch (method) {
+        case 'Alphabet':
+          newtags.sort((a, b) => { return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1 })
+          break
+        case 'Count':
+          newtags.sort((a, b) => { return b.repos.length - a.repos.length })
+          break
+        default: break
+      }
+      commit('initTags', newtags)
+    },
     changeTagName({ state, commit }, { tagId, name }) {
       return validateTagName(state.tags, name)
         .then(name => {

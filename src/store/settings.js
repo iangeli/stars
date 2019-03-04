@@ -8,7 +8,6 @@ export default {
       showLanguageBarInReadme: true,
       showTagsInNavigate: true,
       deleteTagDirect: false,
-      sortTag: 'Alphabet',
       sortLanguage: 'Count'
     }
   },
